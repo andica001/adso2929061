@@ -1,6 +1,15 @@
+
+/* F O N T S */
+/*--------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/*----------------------*/
 /*---------------------------------*/
 /* R E S E T */
 /*---------------------------------*/
+
+
+
 *, *::before, *::after{
     box-sizing: border-box; 
 }
@@ -53,10 +62,7 @@ body, html{
     scroll-behavior: smooth; 
 }
 /*--------------------*/
-/* F O N T S */
-/*--------------------*/
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 /*--------------------*/
 /*V A R I A B L E S */
 /*--------------------*/
@@ -90,6 +96,7 @@ body{
             h2{
                 font-size: 2rem;
                 font-weight: 500;
+                border-bottom: 4px solid ;
             }
             h3{
                 border-radius: 20px;
@@ -97,6 +104,47 @@ body{
                 padding: 4px 12px;
                 color: var(--color-2);
                 font-weight: 700;
+            }
+        }
+        menu{
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-top: 2rem;
+            a:is(:link, :visited){
+                align-items: center;
+                background: var(--color-1);
+                border-radius: 15px;
+                border-style: double;
+                border-color: azure;
+                color: var(--color-2);
+                display: flex;
+                gap: 0.6rem;
+                justify-content: start;
+                text-decoration: none;
+                transition: all 0.4s ease-in;
+                width: 280px;
+
+                span{
+                    align-items: center;
+                    background-color: #383636;
+                    border-radius: 15px 0 0 15px;
+                    color: #fff;
+                    display: flex;
+                    font-size: 1.2rem;
+                    height: 25px;
+                    justify-content: center;
+                    transition: all 0.4s ease-in;
+                    width: 40px;
+                }
+            }
+            a:is(:hover) {
+                background-color: darkgrey;
+                transform: translateX(10px);
+            }
+            a:is(:hover) span{
+                width: 60px;
             }
         }
     }
@@ -116,6 +164,7 @@ background-size: cover;
 
 img{
     border-radius: 50px;
+    object-fit: cover;
     border: 10px solid var(--color-1);
     width: 300px;
 }
