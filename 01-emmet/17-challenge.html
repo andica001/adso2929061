@@ -20,11 +20,46 @@
         </header>
         <section>
             <h3>Example:</h3>
-            <p>meta:vp ↔</p>
+            <p>header#header>nav.navbar.nabvar-inverse>div.container>div.navbar-header>button[type="button" class="navbar-toggle"]
+                >span.sr-only{toggle navigation}+span.icon-bar*3+a[class="navbar-brand" href="index.php"]>img[src="imgs/logo.png" alt=""]
+                ^^div.collapse>ul.nav.navbar-nav>li>a[class="link" href="index.html"]{inicio}^li.active.link>a[href="login.html"]{ingresar}
+                ^li>a[class="link" href="registro.html"]{registrarse}^li>a[class="link" href="contacto.html"]{contacto} ↔</p>
             <h3>Result:</h3>
 <!---------------->
 <xmp>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <header id="header">
+        <nav class="navbar nabvar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">toggle navigation</span>
+                        <span class="icon-bar"></span><span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <a href="index.php" class="navbar-brand">
+                            <img src="imgs/logo.png" alt="">
+                        </a>
+                    </button>
+                    <div class="collapse">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="index.html" class="link">inicio</a>
+                            </li>
+                            <li class="active link">
+                                <a href="login.html">ingresar</a></li>
+                            <li>
+                                <a href="registro.html" class="link">registrarse</a>
+                            </li>
+                            <li>
+                                <a href="contacto.html" class="link">contacto</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    
 </xmp>
 <!--------------->
         </section>
