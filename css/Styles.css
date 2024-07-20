@@ -280,6 +280,7 @@ body.html{
             p{
                 color: #8aa9cc;
                 font-size: 1rem;
+                align-items: center;
             }
         }
         menu{
