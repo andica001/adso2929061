@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24 - Callenge Layout (sprite)</title>
+    <style>
+        body {
+            border: 10px solid white;
+            background-color: #179f53;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        header figure.logo {
+            background: url(../Images/spriteweb.png) no-repeat;
+            background-position: -10px -398px;
+            height: 192px;
+            width: 192px;
+        }
+
+        header menu {
+            display: flex;
+            gap: 1rem;
+            padding: 0;
+            margin: 0;
+        }
+
+        header menu a:is(:link, :visited) {
+            background-color: #0006;
+            border-bottom: 4px solid #fff;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.5s ease-in;
+            width: 125px;
+        }
+
+        header menu a:is(:hover) {
+            background-color: #000;
+            border-bottom: 4px solid #ff0;
+        }
+
+        /*-------------------SECTION-------------------*/
+
+        section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #0006;
+            margin: 0 auto;
+            width: 830px;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 10px;
+            margin-top: 2rem;
+        }
+
+        section div {
+
+            display: flex;
+            gap: 1rem;
+            border: 3px solid #fff;
+
+        }
+
+        section div.logo {
+            background: url(../Images/spriteweb.png) no-repeat;
+            background-position: -510px -10px;
+            height: 190px;
+            width: 260px;
+        }
+
+        section div h3 {
+            background-color: #fff6;
+            color: #000;
+            padding: 1rem;
+            text-align: center;
+            text-decoration: none;
+            text-transform: initial;
+            width: 100%;
+            height: 30px;
+            margin: 0 auto;
+        }
+
+        section div h3:is(:hover) {
+            background-color: #fff9;
+        }
+
+        /*-------------------ASIDE------------------*/
+        aside {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #0006;
+            margin: 0 auto;
+            width: 830px;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 10px;
+            margin-top: 2rem;
+        }
+        aside div.contenedor{
+            background-color: #fff;
+            margin-bottom: 10px;
+            height: 50px;
+        }
+
+        aside div figure.logo1 {
+            background: url(../Images/spriteweb.png) no-repeat;
+            background-position: -285px -502px;
+            height: 100px;
+            width: 100px;
+        }
+
+        aside div figure.logo2 {
+            background: url(../Images/spriteweb.png) no-repeat;
+            background-position: -95px -215px;
+            height: 155px;
+            width: 85px;
+        }
+
+
+        /*-------------------FOOTER-------------------*/
+        footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            margin: 0 auto;
+            width: 850px;
+            margin-bottom: 1rem;
+        }
+
+        footer menu {
+            display: flex;
+            gap: 1rem;
+            padding: 0;
+            margin: 0;
+
+        }
+
+        footer figure.logo {
+            background: url(../Images/spriteweb.png) no-repeat;
+            background-position: -472px -416px;
+            height: 184px;
+            width: 330px;
+        }
+
+        footer menu a:is(:link, :visited) {
+            background-color: #fff;
+            border-bottom: 4px solid #fff;
+            color: gray;
+            padding: 1rem;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.5s ease-in;
+            width: 125px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        footer menu a:is(:hover) {
+            border-bottom: 4px solid #09482C;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <header>
+            <figure class="logo"></figure>
+            <menu>
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Portafolio</a>
+                <a href="#">Services</a>
+                <a href="#">Contact</a>
+            </menu>
+        </header>
+        <section>
+            <div class="logo">
+                <h3>Sprite 1</h3>
+            </div>
+            <div class="logo">
+                <h3>Sprite 2</h3>
+            </div>
+            <div class="logo">
+                <h3>Sprite 3</h3>
+            </div>
+        </section>
+        <aside>
+            <div>
+                <figure class="logo1"></figure>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis cupiditate rerum perspiciatis dolor nulla corrupti voluptatum, ad alias reiciendis, animi inventore dolores debitis blanditiis commodi ipsum aspernatur totam rem facere reprehenderit, saepe et amet repudiandae numquam? Architecto fugit, veniam, nisi quo non recusandae necessitatibus quis cupiditate sunt sed fugiat neque dolorem amet sint! Vero aut consectetur illum exercitationem architecto voluptas beatae, voluptate, commodi eos provident, autem ratione delectus asperiores aliquam.</p>
+                <figure class="logo2"></figure>
+            </div>
+            <div></div>
+        </aside>
+        <footer>
+            <figure class="logo"></figure>
+            <menu>
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Portafolio</a>
+                <a href="#">Services</a>
+                <a href="#">Contact</a>
+            </menu>
+        </footer>
+    </main>
+</body>
+
+</html>
