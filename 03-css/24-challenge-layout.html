@@ -68,8 +68,8 @@
         }
 
         section div {
-
             display: flex;
+            flex-direction: column;
             gap: 1rem;
             border: 3px solid #fff;
 
@@ -103,6 +103,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
             background-color: #0006;
             margin: 0 auto;
             width: 830px;
@@ -111,24 +112,37 @@
             padding: 10px;
             margin-top: 2rem;
         }
-        aside div.contenedor{
+
+        aside div {
+            display: flex;
             background-color: #fff;
-            margin-bottom: 10px;
-            height: 50px;
+            align-items: center;
         }
 
-        aside div figure.logo1 {
+        aside div div.logo1 {
+            margin-top: 3rem;
             background: url(../Images/spriteweb.png) no-repeat;
             background-position: -285px -502px;
             height: 100px;
             width: 100px;
         }
 
-        aside div figure.logo2 {
+        aside div div.logo2 {
             background: url(../Images/spriteweb.png) no-repeat;
             background-position: -95px -215px;
             height: 155px;
-            width: 85px;
+            width: 80px;
+            margin-top: 1.5rem;
+            margin-left: 1rem;
+        }
+
+        aside div div.texto {
+            width: 70%;
+            text-align: justify;
+        }
+
+        aside div div p {
+            width: 600px;
         }
 
 
@@ -204,11 +218,49 @@
         </section>
         <aside>
             <div>
-                <figure class="logo1"></figure>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis cupiditate rerum perspiciatis dolor nulla corrupti voluptatum, ad alias reiciendis, animi inventore dolores debitis blanditiis commodi ipsum aspernatur totam rem facere reprehenderit, saepe et amet repudiandae numquam? Architecto fugit, veniam, nisi quo non recusandae necessitatibus quis cupiditate sunt sed fugiat neque dolorem amet sint! Vero aut consectetur illum exercitationem architecto voluptas beatae, voluptate, commodi eos provident, autem ratione delectus asperiores aliquam.</p>
-                <figure class="logo2"></figure>
+                <div class="logo1">
+                    </figure>
+                </div>
+                <div class="texto">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis cupiditate rerum perspiciatis
+                        dolor nulla corrupti voluptatum, ad alias reiciendis, animi inventore dolores debitis blanditiis
+                        commodi ipsum aspernatur totam rem facere reprehenderit, saepe et amet repudiandae numquam?
+                        Architecto fugit, veniam, nisi quo non recusandae necessitatibus quis cupiditate sunt sed fugiat
+                        neque dolorem amet sint! Vero aut consectetur illum exercitationem architecto voluptas beatae,
+                        voluptate, commodi eos provident, autem ratione delectus asperiores aliquam.</p>
+                </div>
+                <div class="logo2"></div>
             </div>
-            <div></div>
+
+            <div>
+                <div class="logo1">
+                    </figure>
+                </div>
+                <div class="texto">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis cupiditate rerum perspiciatis
+                        dolor nulla corrupti voluptatum, ad alias reiciendis, animi inventore dolores debitis blanditiis
+                        commodi ipsum aspernatur totam rem facere reprehenderit, saepe et amet repudiandae numquam?
+                        Architecto fugit, veniam, nisi quo non recusandae necessitatibus quis cupiditate sunt sed fugiat
+                        neque dolorem amet sint! Vero aut consectetur illum exercitationem architecto voluptas beatae,
+                        voluptate, commodi eos provident, autem ratione delectus asperiores aliquam.</p>
+                </div>
+                <div class="logo2"></div>
+            </div>
+
+            <div>
+                <div class="logo1">
+                    </figure>
+                </div>
+                <div class="texto">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis cupiditate rerum perspiciatis
+                        dolor nulla corrupti voluptatum, ad alias reiciendis, animi inventore dolores debitis blanditiis
+                        commodi ipsum aspernatur totam rem facere reprehenderit, saepe et amet repudiandae numquam?
+                        Architecto fugit, veniam, nisi quo non recusandae necessitatibus quis cupiditate sunt sed fugiat
+                        neque dolorem amet sint! Vero aut consectetur illum exercitationem architecto voluptas beatae,
+                        voluptate, commodi eos provident, autem ratione delectus asperiores aliquam.</p>
+                </div>
+                <div class="logo2"></div>
+            </div>
         </aside>
         <footer>
             <figure class="logo"></figure>
