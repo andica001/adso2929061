@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>39- Challenge Responsive</title>
+
+    <style>
+        * {
+            transition: all 0.2s ease-in;
+        }
+
+        body {
+            background-color: #440;
+            font-family: sans-serif;
+        }
+
+        main {
+            background-color: #ccc;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 850px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        nav {
+            background-color: #ccc;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 850px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        nav div {
+            background: #0009;
+            height: 200px;
+            width: 800px;
+        }
+
+        nav div.logo {
+
+            background-image: url(images/Logo-pop.png);
+            background-size: cover;
+            width: 800px;
+            height: 200px;
+        }
+
+        main div {
+            background: #0009;
+            height: 200px;
+            width: 200px;
+        }
+
+        main div.img1 {
+            background-image: url(images/pop-1989.jpg);
+            background-size: cover;
+            height: 200px;
+            width: 200px;
+        }
+
+        main div.img2 {
+            background-image: url(images/pop-1993.jpg);
+            background-size: cover;
+            height: 200px;
+            width: 200px;
+        }
+
+        main div.img3 {
+            background-image: url(images/pop-2003.jpg);
+            background-size: cover;
+            height: 200px;
+            width: 200px;
+        }
+
+        main div.img4 {
+            background-image: url(images/pop-2004.jpg);
+            background-size: cover;
+            height: 200px;
+            width: 200px;
+        }
+
+        main div.img5 {
+            background-image: url(images/pop-2005.jpg);
+            background-size: cover;
+            height: 200px;
+            width: 200px;
+        }
+
+        main div.img6 {
+            background-image: url(images/pop-2007.jpg);
+            background-size: cover;
+            height: 200px;
+            width: 200px;
+        }
+
+        main div.img7 {
+            background-image: url(images/pop-2008.jpg);
+            background-size: cover;
+            height: 200px;
+            width: 200px;
+        }
+
+        main div.img8 {
+            background-image: url(images/pop-2010.jpg);
+            background-size: cover;
+            height: 200px;
+            width: 200px;
+        }
+
+        main div h3 {
+            background-color: #fff6;
+            color: #000;
+            text-align: center;
+            text-decoration: none;
+            text-transform: initial;
+            width: 100%;
+            height: 50px;
+            margin: 0 auto;
+        }
+
+        main div h3:is(:hover) {
+            background-color: #fff9;
+            width: 100%;
+            height: 50px;
+        }
+
+
+        article {
+            background-color: #ccc;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            width: 850px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        article div img {
+            object-fit: cover;
+            width: 400px;
+            height: 400px;
+        }
+
+
+        @media (max-width: 1024px) {
+            nav {
+                width: 1000px;
+            }
+
+            nav div {
+                width: 1000px;
+            }
+            main {
+                width: 1000px;
+            }
+
+            article {
+                flex-direction: column;
+                width: 1000px;
+            }
+        }
+
+        @media (max-width: 860px) {
+            nav {
+                width: 500px;
+            }
+
+            nav div{
+                width: 500px;
+            }
+            main {
+                width: 500px;
+            }
+
+            article {
+                width: 500px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                width: 400px;
+            }
+
+            nav div {
+                width: 400px;
+            }
+            main {
+                width: 400px;
+            }
+
+            article {
+                flex-direction: column;
+                width: 400px;
+            }
+        }
+
+
+        
+    </style>
+</head>
+
+<body class="css">
+    <nav>
+        <div class="logo">
+            
+        </div>
+    </nav>
+    <main>
+        <div class="img1">
+            <h3>POP - 1989</h3>
+        </div>
+        <div class="img2">
+            <h3>POP - 1993</h3>
+        </div>
+        <div class="img3">
+            <h3>POP - 2003</h3>
+        </div>
+        <div class="img4">
+            <h3>POP - 2004</h3>
+        </div>
+        <div class="img5">
+            <h3>POP - 2005</h3>
+        </div>
+        <div class="img6">
+            <h3>POP - 2007</h3>
+        </div>
+        <div class="img7">
+            <h3>POP - 2008</h3>
+        </div>
+        <div class="img8">
+            <h3>POP - 2010</h3>
+        </div>
+    </main>
+    <article>
+        <div class="img">
+            <img src="images/Pop-2003.jpg" alt="">
+        </div>
+        <div class="txt">
+            <h2>Prince of Persia: Las Arenas del Tiempo (2003)</h2>
+            <p>Los jugadores más nostálgicos recordábamos con mucho cariño lo que había supuesto el lanzamiento de
+                Prince of Persia, casi 15 años antes. Por eso, el hecho de que Ubisoft recuperara la franquicia y
+                reinventara la saga en 2003 fue una gran alegría. Pero también lo fue para todos aquellos nuevos
+                jugadores que no sabían nada del título original. A partir del lanzamiento de Las Arenas del Tiempo
+                comenzaba una década dorada para Ubisoft, con este héroe sacado de ‘Las Mil y Una Noches’ como
+                protagonista absoluto.</p>
+            <p>El juego de 2003 volvía a ser diseñado por Jordan Mechner, el creador del original, junto con Patrice
+                Désilets (que luego nos traería la saga Assassin’s Creed) y llegó para PS2, Xbox, PC, GameCube y Game
+                Boy Advance. Un juego de aventuras y plataformas excepcional.</p>
+        </div>
+    </article>
+
+    <article>
+        <div class="img">
+            <img src="images/Pop-2005.jpg" alt="">
+        </div>
+        <div class="txt">
+            <h2>Prince of Persia: Las Dos Coronas (2005)</h2>
+            <p>Las Dos Coronas es el tercer videojuego, el que cierra la trilogía de las Arenas del Tiempo y que mantuvo
+                la magia del título de 2003 de la mejor manera posible. Superó a la secuela inmediata y todavía
+                recordamos muchos de sus momentos estelares. Fue un juego que supo mezclar lo mejor de las plataformas y
+                puzles de la primera entrega, con el tono más oscuro de la segunda parte, El Alma del Guerrero, pero
+                mucho menos oscuro que aquel.</p>
+            <p>Fue bastante equilibrado y una forma genial de cerrar esta trilogía que pasó a la historia de los
+                videojuegos. Llegó a todas las plataformas de entonces y un par de años después se lanzó para PSP y Wii
+                bajo el nombre de Rival Swords.</p>
+        </div>
+    </article>
+    <article>
+        <div class="img">
+            <img src="images/Pop-2008.jpg" alt="">
+        </div>
+        <div class="txt">
+            <h2>Prince of Persia (2008)</h2>
+            <p>Un nuevo reinicio de la saga llegó en 2008 y Ubisoft quiso hacer borrón y cuenta nueva para revitalizar
+                una IP que ya mostraba signos de desgaste. Así, en 2008 lanzó un nuevo título llamado de nuevo Prince of
+                Persia, con un cambio conceptual en su apartado artístico, optando por un tono cell-shading que le daba
+                un toque de cómic o dibujo animado.</p>
+            <p>Recupera el estilo de la trilogía de las Arenas del Tiempo en su concepción, combates y resolución de
+                puzles, pero aquí la aventura no es lineal sino que permite al jugador ir eligiendo el camino a seguir
+                mientras explora el mundo a su manera. Además, el Príncipe está acompañad de un personaje muy
+                importante, Elika, que devuelve a la vida al Príncipe cada vez que muere. Fue una fantástica pero la
+                idea de desconectar de la historia de Las Arenas del Tiempo tal vez no fue una gran idea.</p>
+        </div>
+    </article>
+
+</body>
+
+</html>
