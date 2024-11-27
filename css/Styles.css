@@ -434,6 +434,7 @@ body.sass {
         }
 
         section {
+            width: 80%;
             p {
                 color: #ce679a;
                 font-size: 1rem;

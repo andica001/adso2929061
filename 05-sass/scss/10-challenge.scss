@@ -10,18 +10,16 @@ body {
     padding: 10px 20px;
     position: relative;
 }
-
 .menu-toggle {
     display: flex;
     justify-content: flex-end;
     cursor: pointer;
     position: relative;
-
-    &:hover + .menu {
-        display: flex;
-    }
+    z-index: 1000;
 }
-
+.menu-toggle-checkbox {
+    display: none;
+}
 .menu-icon {
     display: flex;
     flex-direction: column;
@@ -29,15 +27,13 @@ body {
     align-items: center;
     width: 30px;
     height: 21px;
-
-    .bar {
-        width: 30px;
-        height: 4px;
-        background-color: #3498db;
-        border-radius: 2px;
-    }
 }
-
+.menu-icon .bar {
+    width: 30px;
+    height: 4px;
+    background-color: #3498db;
+    border-radius: 2px;
+}
 .menu {
     list-style: none;
     padding: 0;
@@ -48,34 +44,33 @@ body {
     right: 0;
     background-color: #fff;
     z-index: 10;
-    flex-direction: row;
-    gap: 20px;
-
-    ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: flex;
-    }
-
-    li {
-        text-align: center;
-
-        a {
-            display: block;
-            padding: 15px;
-            color: #df9191;
-            text-decoration: none;
-            font-size: 15px;
-
-            &:hover {
-                background-color: #3498db;
-                color: #fff;
-            }
-        }
-    }
+    flex-direction: column;
+    gap: 10px;
 }
-
+.menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+.menu li {
+    text-align: center;
+}
+.menu li a {
+    display: block;
+    padding: 15px;
+    color: #df9191;
+    text-decoration: none;
+    font-size: 15px;
+}
+.menu li a:hover {
+    background-color: #3498db;
+    color: #fff;
+}
+.menu-toggle-checkbox:checked ~ .menu {
+    display: flex;
+}
 @media (min-width: 501px) {
     .menu {
         display: flex;
@@ -87,30 +82,26 @@ body {
         gap: 20px;
     }
 
+    .menu ul {
+        flex-direction: row;
+        margin: 0;
+        padding: 0;
+    }
     .menu-toggle {
         display: none;
     }
 }
-
 @media (max-width: 500px) {
-    body main section {
-        width: 300px;
-    }
-
     .menu-toggle {
         display: flex;
     }
-
+    .menu ul {
+        flex-direction: column;
+    }
     .menu {
         display: none;
-        position: absolute;
-        top: 50px;
-        width: 100%;
-        left: 0;
-        flex-direction: row;
     }
-
-    .menu-toggle:hover + .menu {
+    .menu-toggle-checkbox:checked ~ .menu {
         display: flex;
     }
 }
