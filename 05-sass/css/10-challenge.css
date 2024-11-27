@@ -20,7 +20,7 @@ body {
 }
 
 .menu-toggle-checkbox {
-  display: flex;
+  display: none;
 }
 
 .menu-icon {
