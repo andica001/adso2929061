@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z-index</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/Styles.css">
+    <style>
+        .bd-example-zindex-levels>:nth-child(1){
+            top: 1.5rem;
+            left: 3rem;
+        }
+        .bd-example-zindex-levels>:nth-child(2){
+            top: 1.5rem;
+            left: 3rem;
+        }
+        .bd-example-zindex-levels>:nth-child(3){
+            top: 1.5rem;
+            left: 3rem;
+        }
+        .bd-example-zindex-levels>:nth-child(4){
+            top: 1.5rem;
+            left: 3rem;
+        }
+        .bd-example-zindex-levels>:nth-child(5){
+            top: 1.5rem;
+            left: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="controls">
+        <a href="../index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <h1>Z-index</h1>
+            <h2>Use our low-level z-index utilities to quickly change the stack level of an element or component.</h2>
+        </header>
+        <section class="content">
+            <div class="bd-example m-0 border-0 bd-example-zindex-levels position-relative bg-primary">
+                <div class="z-3 position-absolute p-5 rounded-3"><span>z-3</span></div>
+                <div class="z-2 position-absolute p-5 rounded-3"><span>z-2</span></div>
+                <div class="z-1 position-absolute p-5 rounded-3"><span>z-1</span></div>
+                <div class="z-0 position-absolute p-5 rounded-3"><span>z-0</span></div>
+                <div class="z-n1 position-absolute p-5 rounded-3"><span>z-n1</span></div>
+                  </div>
+        </section>
+    </main>
+
+</body>
+</html>
