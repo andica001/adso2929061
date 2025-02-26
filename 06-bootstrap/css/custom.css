@@ -1,32 +1,143 @@
-nav.navbar.bg-custom{
+nav.navbar.bg-custom {
     background-color: #29574E;
+
     a.navbar-brand,
-    a.nav-link{
+    a.nav-link {
         color: #c3e2d6
     }
 }
+
 /*hero section*/
-div.row.hero{
+div.row.hero {
     padding-top: 102px;
-    div.col:nth-child(1){
+
+    div.col:nth-child(1) {
         background-color: #99d4c9;
         height: 680px;
-        h3,p{
+
+        h3,
+        p {
             color: gray;
         }
-        h2{
+
+        h2 {
             color: white;
         }
-        p.text-justify{
+
+        p.text-justify {
             text-align: justify;
         }
-        a.btn.bg-custom{
+
+        a.btn.bg-custom {
             background-color: #29574E;
             color: white;
         }
     }
-    div.col:nth-child(2){
+
+    div.col:nth-child(2) {
         background: #6ab1a3 url(../06-challenge/images/hero-picture.png) no-repeat center bottom;
         height: 680px;
+    }
+}
+
+div.row.about {
+    div.col:nth-child(1) {
+        background: #befaef url(../06-challenge/images/about-picture.png) no-repeat center bottom;
+        height: 680px;
+    }
+
+    div.col:nth-child(2) {
+        background-color: #befaef;
+        height: 680px;
+
+        h3 {
+            color: gray;
+        }
+
+        p {
+            color: black;
+        }
+
+        h2 {
+            margin-top: 50px;
+            color: black;
+        }
+
+        p.text-justify {
+            text-align: justify;
+        }
+
+        a.btn.bg-custom {
+            background-color: #29574E;
+            color: white;
+        }
+    }
+
+    div.progress {
+        width: 100%;
+        background-color: #75e0db;
+    }
+
+    div.progress-bar {
+        background-color: #17948e;
+    }
+
+}
+
+div.row.services {
+    background-color: #6ab1a3;
+    padding: 20px;
+
+    div.tittle.row {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            text-align: center;
+        }
+    }
+
+    div.col {
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+        div.card {
+            img {
+                margin-top: 25px;
+                width: 60px;
+                height: 60px;
+            }
+        }
+    }
+}
+
+div.row.portafolio {
+    background-color: #99d4c9;
+
+    div.tittle.row {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+
+        h1 {
+            text-align: center;
+        }
+
+        h3 {
+            text-align: center;
+        }
+    }
+
+    div.card {
+
+        img {
+            margin-top: 25px;
+        }
     }
 }
