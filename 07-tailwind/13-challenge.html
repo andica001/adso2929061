@@ -2,21 +2,22 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>13- Callenge</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css"> <!-- Se llama libreria de Bootstrap  -->
-    <link rel="stylesheet" href="../../css/Styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>13- Callenge</title>
+
+
 </head>
 
-<body class="tailwind">
+<body class="bg-[cyan]">
 
-    <main class="min-h-[100dvh]
+  <main class="min-h-[100dvh]
                 flex
                 flex-col
                 justify-center
                 items-center">
-        <setion id="inicio" class="inicio
+    <setion id="inicio" class="inicio
+                    absolute
                     w-[386px]
                     h-[760px]
                     transition-all
@@ -32,48 +33,48 @@
                     relative
                     bg-top
                     bg-no-repeat">
-            <div class="absolute
+      <div class="absolute
                         rounded-t-[30px]
                         bottom-0
                         w-full
                         h-[396px]
                         bg-white">
 
-                <figure class="logo
+        <figure class="logo
                                 h-[120px]
                                 w-[120px]
                                 mx-auto
                                 mt-[-55px]
                                 bg-[url(images/bg-scr1-chip.png)]
                                 bg-no-repeat">
-                </figure>
-                <h2 class="text-center 
+        </figure>
+        <h2 class="text-center 
                             text-[32px] 
                             mt-[30px]
                             font-[600]
                             text-[#434141]">
-                    Bienvenido a
-                </h2>
-                <h2 class="text-center 
+          Bienvenido a
+        </h2>
+        <h2 class="text-center 
                             text-[32px] 
                             font-[600]
                             text-[#000000]">
-                    Soluciones Andica
-                </h2>
+          Soluciones Andica
+        </h2>
 
-                <h4 class="text-center 
+        <h4 class="text-center 
                             text-[13px] 
                             mt-[30px]
                             font-[300]
                             text-[#696666]">
-                    Encuentra las mejores soluciones de software y automatizaciones para tu negocio y para tu hogar
-                </h4>
-                <div class="actions
+          Encuentra las mejores soluciones de software y automatizaciones para tu negocio y para tu hogar
+        </h4>
+        <div class="actions
                             w-[320px]
                             flex
                             mt-[42px]
                             mx-auto">
-                    <a href="#inscribir" class="w-[160px]
+          <a href="#inscribir" class="w-[160px]
                                     h-[55px]
                                     flex
                                     justify-center
@@ -82,9 +83,9 @@
                                     font-[600]
                                     rounded-s-[25px]
                                     bg-[green]">
-                        Inscribirse
-                    </a>
-                    <a href="#sesion" class="w-[160px]
+            Inscribirse
+          </a>
+          <a href="#sesion" class="w-[160px]
                                     h-[55px]
                                     flex
                                     justify-center
@@ -93,53 +94,274 @@
                                     font-[600]
                                     rounded-e-[25px]
                                     bg-[#D9D9D9]">
-                        Iniciar Sesion
-                        
-                    </a>
-                </div>
+            Iniciar Sesion
+          </a>
+        </div>
 
-            </div>
+      </div>
 
-        </setion>
-        <setion id="sesion"class="sesion
-        w-[386px]
-        h-[760px]
-        transition-all
-        ease-in
-        duration-500
-        translate-x-[-300%]
-        target:translate-x-[0px]
-        my-4
-        rounded-[20px]
-        overflow-hidden
-        bg-[url(images/bg-scr1.png)]
-        bg-[white]
-        relative
-        bg-top
-        bg-no-repeat">
+    </setion>
+    <setion id="sesion" class="sesion
+                                    absolute
+                                    w-[386px]
+                                    h-[760px]
+                                    transition-all
+                                    ease-in
+                                    duration-500
+                                    translate-x-[-300%]
+                                    target:translate-x-[0px]
+                                    my-4
+                                    rounded-[20px]
+                                    overflow-hidden
+                                    bg-[url(images/bg-sesion.png)]
+                                    bg-[white]
+                                    relative
+                                    bg-top
+                                    bg-no-repeat">
 
-        </setion>
-        <setion id="inscribir" class="inscribir
-        w-[386px]
-        h-[760px]
-        transition-all
-        ease-in
-        duration-500
-        translate-x-[-300%]
-        target:translate-x-[0px]
-        my-4
-        rounded-[20px]
-        overflow-hidden
-        bg-[url(images/bg-scr1.png)]
-        bg-[white]
-        relative
-        bg-top
-        bg-no-repeat">
+      <figure class="logo
+                                    h-[114px]
+                                    w-[91px]
+                                    mx-auto
+                                    mt-[18px]
+                                    bg-[url(images/top-logo.svg)]">
+      </figure>
+      <a href="#inicio" class="absolute 
+                                                left-[20px]
+                                                hover:translate-x-[-6px]
+                                                transition-all
+                                                top-[20px]">
+        <img src="images/ico-back.png" alt="Back Welcome">
+      </a>
+      <h2 class="text-[32px]
+                                mt-[10rem]
+                                text-center
+                              text-[black]
+                                font-[500]">Acceder</h2>
+      <h3 class="text-[16px]
+                                text-center
+                              text-[#888]
+                                font-[400]">Ingrese su usuario y contraseña para iniciar sesión</h3>
 
-        </setion>
+      <form action="" class="mt-10
+                                          flex 
+                                          justify-center
+                                          items-center
+                                          flex-col 
+                                          gap-2">
+        <label class="flex 
+                                   gap-1 
+                                 text-[#444]
+                                   text-[16px]
+                                   font-[500]
+                                   w-[320px]
+                                   items-center">
+          <img src="images/logo-usuario.png" alt="Email">
+          Usuario:
+        </label>
+        <input class="border-[2px]
+                                 border-[black]
+                                 text-[#888]
+                                   w-[320px]
+                                   outline-none
+                                   indent-4
+                                   bg-[#D9D9D9]
+                                   h-[55px]
+                                   rounded-[25px]" type="text" placeholder="andica001">
+        <label class="flex 
+                                   gap-1 
+                                 text-[black]
+                                   text-[16px]
+                                   font-[500]
+                                   w-[320px]
+                                   items-center">
+          <img src="images/logo-password.png" alt="Password">
+          contraseña:
+        </label>
+        <input class="border-[2px]
+                                 border-[#444]
+                                 text-[#888]
+                                   w-[320px]
+                                   outline-none
+                                   indent-4
+                                   h-[55px]                                   
+                                   bg-[#D9D9D9]
+                                   rounded-[25px]" type="password" placeholder="***********">
+        <button class="w-[320px]
+                                    mt-[10px]
+                                    cursor-pointer
+                                    transition-all
+                                    hover:scale-[1.05]
+                                  text-white
+                                    rounded-[25px]
+                                    text-[16px]
+                                    font-[500]
+                                    h-[55px]
+                                  bg-[#1EBA3B]">
+          Iniciar Sesion
+        </button>
+      </form>
+      <div class="w-[100%]
+                            flex
+                            items-center
+                            justify-center
+                            mt-[10px]
+                            text-center">
 
-    </main>
-    <script src="js/tailwind.js"></script>
+        <h3 class="text-[16px]
+                                text-center
+                                flex
+                                text-[#888]
+                                font-[400]"><strong>No tienes cuenta?</strong></h3>
+        <a href="#inscribir" class="
+                                flex
+                                ml-[10px]
+                                justify-center
+                                font-[400]
+                                text-[#1280E7]
+                                border-b-2">
+          <strong>Suscríbete</strong>
+        </a>
+
+      </div>
+
+    </setion>
+    <setion id="inscribir" class="sesion
+                                    absolute
+                                    w-[386px]
+                                    h-[760px]
+                                    transition-all
+                                    ease-in
+                                    duration-500
+                                    translate-x-[-300%]
+                                    target:translate-x-[0px]
+                                    my-4
+                                    rounded-[20px]
+                                    overflow-hidden
+                                    bg-[url(images/bg-sesion.png)]
+                                    bg-[white]
+                                    relative
+                                    bg-top
+                                    bg-no-repeat">
+
+      <figure class="logo
+                                    h-[114px]
+                                    w-[91px]
+                                    mx-auto
+                                    mt-[18px]
+                                    bg-[url(images/top-logo.svg)]">
+      </figure>
+      <a href="#inicio" class="absolute 
+                                                left-[20px]
+                                                hover:translate-x-[-6px]
+                                                transition-all
+                                                top-[20px]">
+        <img src="images/ico-back.png" alt="Back Welcome">
+      </a>
+
+      <form action="" class="mt-[12rem]
+                                          flex 
+                                          justify-center
+                                          items-center
+                                          flex-col 
+                                          gap-2">
+        <label class="flex 
+                                          gap-1 
+                                        text-[#444]
+                                          text-[16px]
+                                          font-[500]
+                                          w-[320px]
+                                          items-center">
+          <img src="images/logo-correo.png" alt="Email">
+          Correo Electrónico:
+        </label>
+        <input class="border-[2px]
+                                        border-[black]
+                                        text-[#888]
+                                          w-[320px]
+                                          outline-none
+                                          indent-4
+                                          bg-[#D9D9D9]
+                                          h-[55px]
+                                          rounded-[25px]" type="text" placeholder="andica001@gmail.com">
+        <label class="flex 
+                                   gap-1 
+                                 text-[#444]
+                                   text-[16px]
+                                   font-[500]
+                                   w-[320px]
+                                   items-center">
+          <img src="images/logo-usuario.png" alt="Email">
+          Usuario:
+        </label>
+        <input class="border-[2px]
+                                 border-[black]
+                                 text-[#888]
+                                   w-[320px]
+                                   outline-none
+                                   indent-4
+                                   bg-[#D9D9D9]
+                                   h-[55px]
+                                   rounded-[25px]" type="text" placeholder="andica001">
+        <label class="flex 
+                                   gap-1 
+                                 text-[black]
+                                   text-[16px]
+                                   font-[500]
+                                   w-[320px]
+                                   items-center">
+          <img src="images/logo-password.png" alt="Password">
+          contraseña:
+        </label>
+        <input class="border-[2px]
+                                 border-[#444]
+                                 text-[#888]
+                                   w-[320px]
+                                   outline-none
+                                   indent-4
+                                   h-[55px]                                   
+                                   bg-[#D9D9D9]
+                                   rounded-[25px]" type="password" placeholder="***********">
+        <button class="w-[320px]
+                                    mt-[10px]
+                                    cursor-pointer
+                                    transition-all
+                                    hover:scale-[1.05]
+                                  text-white
+                                    rounded-[25px]
+                                    text-[16px]
+                                    font-[500]
+                                    h-[55px]
+                                  bg-[#1EBA3B]">
+          Inscribirse
+        </button>
+      </form>
+      <div class="w-[100%]
+                            flex
+                            items-center
+                            justify-center
+                            mt-[10px]
+                            text-center">
+        <h3 class="text-[16px]
+                                text-center
+                                flex
+                                text-[#888]
+                                font-[400]"><strong>Si ya tienes cuenta,</strong></h3>
+        <a href="#sesion" class="
+                                flex
+                                ml-[10px]
+                                justify-center
+                                font-[400]
+                                text-[#1280E7]
+                                underline">
+          <strong>Inicia Sesión</strong>
+        </a>
+      </div>
+
+    </setion>
+
+  </main>
+  <script src="js/tailwind.js"></script>
 </body>
 
 </html>
