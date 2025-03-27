@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>00 - Template</title>
+    <title>00 - Comments</title>
     <link rel="stylesheet" href="../css/Styles.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
@@ -21,13 +21,39 @@
     </nav>
     <main>
         <header>
-            <h1>00 - Template</h1>
-            <h2>Description</h2>
+            <h1>02 - Comments</h1>
+            <h2>Añade comentarios para explicar o anotar tu código.</h2>
 
         </header>
         <section>
-
+            <h2 id="time">00:00:00</h2>
         </section>
     </main>
+    <script>
+        // This is a line comment
+        const time = document.getElementById('time')
+
+        /*
+            this is a bloque comment:
+            it´s used to multiple lines of code
+            or inactive large portions of code
+        */
+
+
+        // this is a interval time
+        setInterval(function(){
+            let today=new Date // New Date
+            let hours=today.getHours() // obtener horas
+            let minutes=today.getMinutes() // Obtener Minutos
+            let secunds=today.getSeconds() // Obtener Segundos
+
+            // show time
+            time.textContent=`${hours}:${minutes}:${secunds}`
+            
+            // Add styles
+            time.style.textAlign = 'Center'
+            time.style.zoom = '3.4'
+        },1000)// 1 secund=1000 ms
+    </script>
 </body>
 </html>

@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>00 - Template</title>
+    <title>01 - Write</title>
     <link rel="stylesheet" href="../css/Styles.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
 </head>
 
 <body class="js">
@@ -21,13 +22,37 @@
     </nav>
     <main>
         <header>
-            <h1>00 - Template</h1>
-            <h2>Description</h2>
+            <h1>01 - Write</h1>
+            <h2>Aprende a escribir y ejecutar código básico de JavaScript.</h2>
 
         </header>
         <section>
-
+            <script>
+                document.write('<h3>Welcome to JS</h3>')
+            </script>
+            <p id="message"></p>
         </section>
     </main>
+    <script>
+        const message = document.getElementById('message')
+        const string = 'amazing'
+        message.innerHTML ="<strong>We love</strong>"
+        message.innerText += ' Javascript, '
+        message.textContent +=`JS is ${string} 💛`
+
+        // Escribir en consola
+        console.clear
+        console.log('This is a console message')
+        console.log('2**4='+2**4)
+
+
+        const pokemons =[
+            ['Picachu','Electric'],
+            ['Bulbasour','Grass'],
+            ['Charmander','Fire'],
+            ['Squirtle','Water'],
+        ]
+        console.table(pokemons)
+    </script>
 </body>
 </html>
