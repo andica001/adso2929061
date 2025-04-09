@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05 - Methods-object</title>
+    <link rel="stylesheet" href="../css/Styles.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+    <style>
+        main section h3.pk-name {
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        main section h4 {
+            background-color: #fff9;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 1.6rem;
+            margin: 0 auto;
+            padding: 0.4rem 1rem;
+            width: fit-content;
+        }
+
+        main section figure {
+            background-repeat: no-repeat;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            height: 192px;
+            width: 202px;
+        }
+
+        main section figure.alive {
+            background-position-x: 0px;
+        }
+
+        main section figure.attack {
+            background-position-x: -202px;
+        }
+
+        main section figure.feed {
+            background-position-x: -404px;
+        }
+
+        main section figure.dead {
+            background-position-x: -608px;
+        }
+
+        main section div.actions {
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            width: 150px;
+
+            button {
+                background: #fff9;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                padding: 0.4rem 1rem;
+                transition: transform 0.2s ease-in;
+
+                &:hover {
+                    transform: scale(1.2);
+                }
+            }
+        }
+    </style>
+</head>
+
+<body class="js">
+    <nav>
+        <a href="../index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <path fill="#ffffff"
+                    d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z">
+                </path>
+            </svg>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <h1>05 - Methods-object</h1>
+            <h2>Usa métodos para interactuar con objetos.</h2>
+
+        </header>
+        <section>
+            <h3 class="pk-name"></h3>
+            <h4 class="pk-hp"></h4>
+            <figure class="pk-image animate__animated"></figure>
+            <div class="actions">
+                <button class="btn-attack">Attack</button>
+                <button class="btn-feed">Feed</button>
+            </div>
+        </section>
+    </main>
+    <script>
+        //elements
+        const pkName = document.querySelector('.pk-name')
+        const pkHp = document.querySelector('.pk-hp')
+        const pkImage = document.querySelector('.pk-image')
+
+        //buttons
+        const btnAttack = document.querySelector('.btn-attack')
+        const btnFeed = document.querySelector('.btn-feed')
+
+        //object
+        const pokemon = {
+
+            //Attributes
+            name: 'Snorlax',
+            type: 'Normal',
+            hp: 100,
+            image: 'images/snorlax-sprite.png',
+            status: 'alive',
+
+            //Methods
+
+            render: function () {
+                pkName.innerHTML = `${this.name} <small>[${this.type}]</small>`
+                pkImage.style.backgroundImage = `url(${this.image})`
+                this.updateHp('animate__rubberBand')
+                this.updateStatus()
+            },
+
+            updateHp: function (fx) {
+                pkHp.textContent = `HP: ${this.hp}`
+                pkImage.classList.add(`${this.status}`,fx)
+            },
+            feed: function () {
+                if (this.hp < 200) {
+                    this.hp += 25
+                    this.status = 'feed'
+                    pkImage.classList.remove('alive','attack','dead')
+                    this.updateHp('animate__rubberBand')
+                    this.updateStatus()
+                }
+            },
+
+            attack: function () {
+                if(this.hp<=25){
+                    this.hp=0
+                    this.status='dead'
+                    pkImage.classList.remove('alive','feed','attack')
+                    this.updateHp('animate__tada')
+                    this.updateStatus()
+                }
+                else{
+                    this.hp -= 25
+                    this.status = 'attack'
+                    pkImage.classList.remove('alive','feed','dead')
+                    this.updateHp('animate__tada')
+                    this.updateStatus()
+                    
+                }
+            },
+            updateStatus: function(){
+                
+                setTimeout(() =>{
+                    this.status='alive'
+                    pkImage.classList.remove('animate__rubberBand','animate__tada','feed','attack','dead')
+                },1200)
+
+            }
+        }
+
+        pokemon.render()
+
+        //events
+        btnFeed.addEventListener('click', () => {
+            pokemon.feed()
+        })
+
+        btnAttack.addEventListener('click', () => {
+            pokemon.attack()
+        })
+    </script>
+</body>
+
+</html>
