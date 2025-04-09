@@ -149,8 +149,8 @@
                     this.hp=0
                     this.status='dead'
                     pkImage.classList.remove('alive','feed','attack')
-                    this.updateHp('animate__tada')
-                    pkImage.classList.remove('animate__rubberBand','animate__tada','feed','attack','dead')
+                    this.updateHp('animate__swing')
+                    this.updateStatus()
                 }
                 else{
                     this.hp -= 25
@@ -164,8 +164,13 @@
             updateStatus: function(){
                 
                 setTimeout(() =>{
-                    this.status='alive'
-                    pkImage.classList.remove('animate__rubberBand','animate__tada','feed','attack','dead')
+                    if (this.status!='dead'){
+                        this.status='alive'
+                        pkImage.classList.remove('animate__rubberBand','animate__tada','feed','attack','dead')
+                    }else{
+                        pkImage.classList.remove('animate__swing')
+                    }
+                    
                 },1200)
 
             }
