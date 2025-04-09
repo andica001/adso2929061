@@ -150,7 +150,7 @@
                     this.status='dead'
                     pkImage.classList.remove('alive','feed','attack')
                     this.updateHp('animate__tada')
-                    this.updateStatus()
+                    pkImage.classList.remove('animate__rubberBand','animate__tada','feed','attack','dead')
                 }
                 else{
                     this.hp -= 25
