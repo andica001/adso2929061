@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08 - Functions</title>
+    <link rel="stylesheet" href="../css/Styles.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.4rem;
+            strong,output{
+                font-size: 1.6rem;
+            }
+            input{
+                border-radius: 0.4rem;
+                border: none;
+                padding: 0.4rem;
+                width: 100px;
+            }
+            h4{
+                font-size: 1.4rem;
+                margin-block: 1.2rem;
+            }
+
+        }
+    </style>
+</head>
+
+<body class="js">
+    <nav>
+        <a href="../index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <path fill="#ffffff"
+                    d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z">
+                </path>
+            </svg>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <h1>08 - Functions</h1>
+            <h2>Define y usa bloques de código reutilizables.</h2>
+
+        </header>
+        <section>
+            <h3>01 - Funcion sin Argumentos/Parametros</h3>
+            <h4 class="greeting"></h4>
+
+            <h3>02 - Funcion con Argumentos/Parametros</h3>
+            <form action="">
+                <input type="number" id="n1" min="1" max="999" placeholder="Number 1">
+                <strong>+</strong>
+                <input type="number" id="n2" min="1" max="999" placeholder="Number 2">
+                <strong>=</strong>
+                <output></output>
+            </form>
+            <h3>03 - Funcion que retorna un Valor</h3>
+            <h4 class="time"></h4>
+        </section>
+    </main>
+    <script>
+        //Elements
+        const greeting=document.querySelector('.greeting')
+        const n1=document.querySelector('#n1')
+        const n2=document.querySelector('#n2')
+        const rs=document.querySelector('output')
+        const time=document.querySelector('.time')
+
+        //01 - funcion sin Argumentos/Parametros
+        function showGreeting(){
+            greeting.textContent=`Welcome JS User ❤️`
+        }
+
+        showGreeting()
+
+        //02 - Funcion con Argumentos/Parametros
+        function showSum(n1,n2){
+            if(n1.length>0 && n2.length>0){
+                rs.textContent=parseInt(n1) + parseInt(n2)
+            }
+            else {
+                rs.textContent=0
+            }
+        }
+
+        //Event Listener Array Function (unknow this)
+        n1.addEventListener('input', ()=>{
+            showSum(n1.value, n2.value)
+        })
+        n2.oninput= () =>{
+            showSum(n1.value, n2.value)
+        }
+
+        //03- Funcion que retorna un valor
+        function showTime(){
+            const ndate= new Date()
+            const meridian= (parseInt(ndate.getHours())<=12)? 'am' : 'pm'
+            return `${ndate.getHours()}:${ndate.getMinutes()} ${meridian}`
+        }
+
+        time.textContent = `Time: ${showTime()}`
+
+    </script>
+</body>
+</html>
