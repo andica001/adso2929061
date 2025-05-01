@@ -26,16 +26,16 @@
                 position: absolute;
                 top: 20px;
                 right: 20px;
-                height: 40px;
+                height: 50px;
                 transition: transform 0.4s ease-in;
-                width: 40px;
+                width: 50px;
                 &:hover {
                     transform: scale(1.1);
                 }
             }
 
             h4 {
-                color: #333;
+                color: #000000;
                 font-weight: 600;
                 font-size: 16px;
                 text-align: center;
@@ -48,18 +48,18 @@
             }
 
             h4.title-model {
-                top: 220px;
+                top: 200px;
                 left: 14px;
                 width: 100px;
             }
 
             h4.title-refer {
-                top: 220px;
+                top: 200px;
                 width: 100%;
             }
 
             h4.title-color {
-                top: 220px;
+                top: 200px;
                 left: 254px;
                 width: 100px;
             }
@@ -159,15 +159,17 @@
                 }
                 div.bg-route {
                     background: url(images/vehicle/bg-route.svg) repeat-x 0 bottom;
+                    height: 80px;
+                    margin-top: 170px;
                     z-index: 3;
                 }
 
                 img.car {
                     display: flex;
-                    margin: 174px auto 0 auto;
+                    margin: 150px auto 0 auto;
                     object-fit: contain;
-                    height: 54px;
-                    width: 164px;
+                    height: 80px;
+                    width: 200px;
                     position: relative; 
                     z-index: 4;
                 }
@@ -205,6 +207,8 @@
                 }
                 div.bg-route {
                     background: url(images/vehicle/bg-route-dark.svg) repeat-x 0 bottom /contain;
+                    height: 80px;
+                    margin-top: 170px;
                     z-index: 3;
                 }
             }
@@ -291,11 +295,11 @@
         // Object 
         const vehicles = {
             attrs: [
-                { brand: 'Ferrari',    refer: '458 Italia', model: '2020', color: 'Red',   image: 'images/vehicle/car01.webp' },
-                { brand: 'Audi',       refer: 'Q5',         model: '2018', color: 'White', image: 'images/vehicle/car02.webp' },
-                { brand: 'BMW',        refer: 'X7',         model: '2022', color: 'Blue',  image: 'images/vehicle/car03.webp' },
-                { brand: 'Porshe',     refer: 'Carrera',    model: '2024', color: 'Black', image: 'images/vehicle/car04.webp' },
-                { brand: 'Wolkswagen', refer: 'Arteon',     model: '2010', color: 'Green', image: 'images/vehicle/car05.webp' }
+                { brand: 'Volkswagen', refer: 'Sedan',      model: '1993', color: 'Blue',   image: 'images/vehicle/car01.png' },
+                { brand: 'Chevrolet',  refer: 'Chevette',   model: '1973', color: 'Yellow', image: 'images/vehicle/car02.png' },
+                { brand: 'Renoult',    refer: 'R4',         model: '1991', color: 'Red',    image: 'images/vehicle/car03.png' },
+                { brand: 'Jaguar',     refer: 'XK-E',       model: '1975', color: 'Purple', image: 'images/vehicle/car04.png' },
+                { brand: 'Nissan',     refer: 'GTR',        model: '2000', color: 'Yellow', image: 'images/vehicle/car05.png' }
             ]
         }
 
