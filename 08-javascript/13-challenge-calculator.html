@@ -66,7 +66,7 @@
             footer {
                 display: grid;
                 grid-template-columns: repeat(4, 80px);
-                gap: 5px;
+                gap: 11px;
                 width: 360px;
                 margin: 0.6rem auto 0 auto;
 
@@ -87,12 +87,15 @@
                     &.btn-clear {
                         background: url(images/calc/btn-clear.png) no-repeat center;
                     }
+
                     &.btn-del {
                         background: url(images/calc/btn-del.png) no-repeat center;
                     }
+
                     &.btn-pow {
                         background: url(images/calc/btn-pow.png) no-repeat center;
                     }
+
                     &.btn-mod {
                         background: url(images/calc/btn-mod.png) no-repeat center;
                     }
@@ -100,61 +103,232 @@
                     &.btn-1 {
                         background: url(images/calc/btn-1.png) no-repeat center;
                     }
+
                     &.btn-2 {
                         background: url(images/calc/btn-2.png) no-repeat center;
                     }
+
                     &.btn-3 {
                         background: url(images/calc/btn-3.png) no-repeat center;
                     }
+
                     &.btn-mult {
                         background: url(images/calc/btn-mult.png) no-repeat center;
                     }
+
                     &.btn-4 {
                         background: url(images/calc/btn-4.png) no-repeat center;
                     }
+
                     &.btn-5 {
                         background: url(images/calc/btn-5.png) no-repeat center;
                     }
+
                     &.btn-6 {
                         background: url(images/calc/btn-6.png) no-repeat center;
                     }
+
                     &.btn-subs {
                         background: url(images/calc/btn-subs.png) no-repeat center;
                     }
+
                     &.btn-7 {
                         background: url(images/calc/btn-7.png) no-repeat center;
                     }
+
                     &.btn-8 {
                         background: url(images/calc/btn-8.png) no-repeat center;
                     }
+
                     &.btn-9 {
                         background: url(images/calc/btn-9.png) no-repeat center;
                     }
+
                     &.btn-plus {
                         background: url(images/calc/btn-plus.png) no-repeat center;
                     }
+
                     &.btn-div {
                         background: url(images/calc/btn-div.png) no-repeat center;
                     }
+
                     &.btn-0 {
                         background: url(images/calc/btn-0.png) no-repeat center;
                     }
+
                     &.btn-dot {
                         background: url(images/calc/btn-dot.png) no-repeat center;
                     }
+
                     &.btn-equal {
                         background: url(images/calc/btn-equal.png) no-repeat center;
                     }
-                    
+
                 }
 
 
             }
+
             /**Dark Mode*/
-            &.dark{
-                background-color: #000000;
+            &.dark {
+                background-color: #191A1C;
+                border-radius: 15px;
+                height: 640px;
+                margin: 0 auto;
+                width: 380px;
+                transition: all 0.5s ease-in;
+
+                header {
+                    position: relative;
+                    margin: 0 auto;
+                    width: 360px;
+                    height: 160px;
+
+                    button.btn-mode {
+                        background: url(images/calc/btn-mode-dark.png) no-repeat center;
+                        cursor: pointer;
+                        position: absolute;
+                        top: 8px;
+                        border: 1px solid gray;
+                        border-radius: 15px;
+                        width: 120px;
+                        height: 30px;
+                        transition: transform 0.2s ease-in;
+
+                        &:hover {
+                            transform: scale(1.1);
+                        }
+
+                    }
+
+                    input.operation {
+                        color: #FFFFFF;
+                        background: transparent;
+                        font-size: 16px;
+                        outline: none;
+                        position: absolute;
+                        top: 80px;
+                        width: 95%;
+                        text-align: right;
+                        font-weight: 500;
+                        border: 0px;
+                    }
+
+                    h4.result {
+                        position: absolute;
+                        color: #FFFFFF;
+                        font-weight: 600px;
+                        font-size: 40px;
+                        top: 50px;
+                        right: 0;
+
+                    }
+                }
+
+                footer {
+                    display: grid;
+                    grid-template-columns: repeat(4, 80px);
+                    gap: 11px;
+                    width: 360px;
+                    margin: 0.6rem auto 0 auto;
+
+                    button {
+                        border: none;
+                        cursor: pointer;
+                        opacity: 0.8;
+                        height: 80px;
+                        border-radius: 15px;
+                        background-color: #38393B;
+                        transition: all 0.2s ease-in;
+
+                        &:hover {
+                            opacity: 1;
+                            transform: scale(1.1);
+                        }
+
+                        &.btn-clear {
+                            background: url(images/calc/btn-clear-dark.png) no-repeat center;
+                        }
+
+                        &.btn-del {
+                            background: url(images/calc/btn-del-dark.png) no-repeat center;
+                        }
+
+                        &.btn-pow {
+                            background: url(images/calc/btn-pow-dark.png) no-repeat center;
+                        }
+
+                        &.btn-mod {
+                            background: url(images/calc/btn-mod-dark.png) no-repeat center;
+                        }
+
+                        &.btn-1 {
+                            background: url(images/calc/btn-1-dark.png) no-repeat center;
+                        }
+
+                        &.btn-2 {
+                            background: url(images/calc/btn-2-dark.png) no-repeat center;
+                        }
+
+                        &.btn-3 {
+                            background: url(images/calc/btn-3-dark.png) no-repeat center;
+                        }
+
+                        &.btn-mult {
+                            background: url(images/calc/btn-mult-dark.png) no-repeat center;
+                        }
+
+                        &.btn-4 {
+                            background: url(images/calc/btn-4-dark.png) no-repeat center;
+                        }
+
+                        &.btn-5 {
+                            background: url(images/calc/btn-5-dark.png) no-repeat center;
+                        }
+
+                        &.btn-6 {
+                            background: url(images/calc/btn-6-dark.png) no-repeat center;
+                        }
+
+                        &.btn-subs {
+                            background: url(images/calc/btn-subs-dark.png) no-repeat center;
+                        }
+
+                        &.btn-7 {
+                            background: url(images/calc/btn-7-dark.png) no-repeat center;
+                        }
+
+                        &.btn-8 {
+                            background: url(images/calc/btn-8-dark.png) no-repeat center;
+                        }
+
+                        &.btn-9 {
+                            background: url(images/calc/btn-9-dark.png) no-repeat center;
+                        }
+
+                        &.btn-plus {
+                            background: url(images/calc/btn-plus-dark.png) no-repeat center;
+                        }
+
+                        &.btn-div {
+                            background: url(images/calc/btn-div-dark.png) no-repeat center;
+                        }
+
+                        &.btn-0 {
+                            background: url(images/calc/btn-0-dark.png) no-repeat center;
+                        }
+
+                        &.btn-dot {
+                            background: url(images/calc/btn-point-dark.png) no-repeat center;
+                        }
+
+                        &.btn-equal {
+                            background: url(images/calc/btn-equal-dark.png) no-repeat center;
+                        }
+
+                    }
+                }
             }
-        }
     </style>
 </head>
 
@@ -208,29 +382,41 @@
     </main>
     <script>
         //Elements
-        const calculator= document.querySelector('.calculator')
-        const operation =document.querySelector('.operation')
-        const result =document.querySelector('.result')
+        const calculator = document.querySelector('.calculator')
+        const operation = document.querySelector('.operation')
+        const result = document.querySelector('.result')
         const btnNumbers = document.querySelectorAll('button[data-num]')
         const btnOpers = document.querySelectorAll('button[data-opr]')
-        const btnClear=document.querySelector('.btn-clear')
-        const btnDel=document.querySelector('.btn-del')
-        const btnEqual=document.querySelector('.btn-equal')
-        const btnMode=document.querySelector('.btn-mode')
+        const btnClear = document.querySelector('.btn-clear')
+        const btnDel = document.querySelector('.btn-del')
+        const btnEqual = document.querySelector('.btn-equal')
+        const btnMode = document.querySelector('.btn-mode')
+
+        const darkMode = window.matchMedia('(prefers-color-scheme: dark)')
+        darkMode.addListener(darkModeChange)
+
+        function darkModeChange(dm) {
+            if (dm.matches) {
+                calculator.classList.add('dark')
+            } else {
+                calculator.classList.remove('dark')
+            }
+        }
+        darkModeChange(darkMode)
 
         //Events
-        btnMode.addEventListener('click',(e)=>{
+        btnMode.addEventListener('click', (e) => {
             calculator.classList.toggle('dark')
         })
-        btnClear.addEventListener('click',(e) => {
+        btnClear.addEventListener('click', (e) => {
             result.textContent = ''
             operation.value = ''
         })
-        btnDel.addEventListener('click',(e) => {
+        btnDel.addEventListener('click', (e) => {
             operation.value = operation.value.slice(0, -1)
         })
-        btnEqual.addEventListener('click',(e) => {
-            result.textContent=`=${eval(operation.value)}`
+        btnEqual.addEventListener('click', (e) => {
+            result.textContent = `${eval(operation.value)}`
         })
 
         btnNumbers.forEach(btn => {
@@ -242,6 +428,29 @@
             btn.addEventListener('click', (e) => {
                 operation.value += btn.dataset.opr
             })
+        })
+
+        document.addEventListener('keydown', (e) => {
+            const key = e.key
+            const operators = ['+', '-', '*', '/', '%', '.']
+            const lastChar = operation.value.slice(-1)
+
+            if (!isNaN(key)) {
+                // Si la tecla es un número (0-9)
+                operation.value += key
+            } else if (operators.includes(key)) {
+                // Si la tecla es un operador, asegúrate que el último carácter no lo sea
+                if (!operators.includes(lastChar) && operation.value !== '') {
+                    operation.value += key
+                }
+            } else if (key === 'Backspace') {
+                operation.value = operation.value.slice(0, -1)
+            } else if (key === 'Enter') {
+                result.textContent = eval(operation.value)
+            } else if (key === 'Escape') {
+                operation.value = ''
+                result.textContent = ''
+            }
         })
     </script>
 </body>
