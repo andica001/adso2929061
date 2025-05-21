@@ -4,9 +4,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>00 - Template</title>
+    <title>16 - Challenge</title>
     <link rel="stylesheet" href="../css/Styles.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        div.weather {
+            div.search {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                input.query {
+                    border: none;
+                    border-radius: 5rem;
+                    outline: none;
+                    padding: 0.4rem 0.6rem;
+                }
+
+                button.btn-search {
+                    border: none;
+                    background: transparent;
+                    width: 50px;
+                    cursor: pointer;
+                    transition: transform 0.2s ease-in;
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
+
+        div.widget {
+            position: relative;
+            width: 360px;
+            height: 380px;
+            background: url(images/widget/fondo-day.png);
+
+            h4.pais {
+                position: absolute;
+                top: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 1.4rem;
+            }
+
+            h4.ciudad {
+                position: absolute;
+                top: 15px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 1.8rem;
+            }
+
+            div.temp {
+                width: 200px;
+                height: 200px;
+
+                img.icoCon {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                h4.temText {
+                    position: absolute;
+                    top: -30px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    font-size: 1.4rem;
+
+                }
+            }
+
+            &.night {
+                position: relative;
+                width: 360px;
+                height: 380px;
+                background: url(images/widget/fondo-night.png);
+            }
+        }
+    </style>
 </head>
 
 <body class="js">
@@ -21,13 +99,113 @@
     </nav>
     <main>
         <header>
-            <h1>00 - Template</h1>
-            <h2>Description</h2>
+            <h1>16 - Challenge</h1>
+            <h2>Resuelve problemas usando lógica condicional.</h2>
 
         </header>
         <section>
+            <div class="weather">
+                <div class="search">
+                    <input class="query" type="text" placeholder="location">
+                    <button class="btn-search">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                            <path d="M8.25 10.875a2.625 2.625 0 1 1 5.25 0 2.625 2.625 0 0 1-5.25 0Z" />
+                            <path fill-rule="evenodd"
+                                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.125 4.5a4.125 4.125 0 1 0 2.338 7.524l2.007 2.006a.75.75 0 1 0 1.06-1.06l-2.006-2.007a4.125 4.125 0 0 0-3.399-6.463Z"
+                                clip-rule="evenodd" />
+                        </svg>
 
+                    </button>
+                </div>
+                <div class="widget">
+                    <img class="icoDia">
+                    <h4 class="pais"></h4>
+                    <h4 class="ciudad"></h4>
+                    <h4 class="fecha"></h4>
+                    <div class="temp">
+                        <img class="icoCon" src="" alt="">
+                        <h4 class="tempText"></h4>
+                    </div>
+                    <h4 class="condicion"></h4>
+                    <h4 class="humedad"></h4>
+                    <h4 class="nube"></h4>
+                </div>
+            </div>
         </section>
     </main>
+    <script>
+        //
+        const q = document.querySelector('.query')
+        const btnSearch = document.querySelector('.btn-search')
+        const infoList = document.querySelector('.info')
+
+
+        widget = document.querySelector('.widget')
+
+        const pais = document.querySelector('.pais')
+        const ciudad = document.querySelector('.ciudad')
+        const fecha = document.querySelector('.fecha')
+        const condicion = document.querySelector('.condicion')
+        const humedad = document.querySelector('.humedad')
+        const nube = document.querySelector('.nube')
+        const icoCon = document.querySelector('.icoCon')
+        const tempText = document.querySelector('.tempText')
+
+        //Events
+        btnSearch.addEventListener('click', () => {
+            if (q.value.length > 0) {
+                showWeather(q.value)
+                q.value = ''
+            } else {
+                alert('Por favor inserte una Ubicacion')
+            }
+        })
+
+        const showWeather = async (q) => {
+            const url = `https://api.weatherapi.com/v1/current.json?key=9a61cceb9d46444fa9d11106251005&q=${q}`
+            const response = await fetch(url)
+            const data = await response.json()
+            console.log(data)
+
+            info = {
+                "Country": data.location.country,
+                "name": data.location.name,
+                "datetime": data.current.last_updated,
+                "tempc": data.current.temp_c,
+                "isDay": data.current.is_day,
+                "conditionText": data.current.condition.text,
+                "conditionIcon": data.current.condition.icon,
+                "humidity": data.current.humidity,
+                "cloud": data.current.cloud
+
+
+            }
+            console.log(info)
+            //infoList.textContent = JSON.stringify(info)
+            /* infoList.innerHTML = ''
+             for (i in info) {
+                 if (i == 'conditionIcon') {
+                     infoList.innerHTML += `<li> ${i}: <img src='${info[i]}' width='30'></li>`
+                 } else {
+                     infoList.innerHTML += `<li>${i}: ${info[i]}</li>`
+                 }
+             }*/
+            if (info.isDay == 0) {
+                widget.classList.add('night')
+            } else {
+                widget.classList.remove('night')
+            }
+            pais.textContent = info.Country
+            ciudad.textContent = info.name
+            fecha.textContent = info.datetime
+            condicion.textContent = info.conditionText
+            humedad.textContent = info.humidity
+            nube.textContent = info.cloud
+            icoCon.src = info.conditionIcon
+            tempText.textContent = info.tempc
+        }
+        showWeather('Manizales')
+    </script>
 </body>
+
 </html>
