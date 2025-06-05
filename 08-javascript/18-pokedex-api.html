@@ -13,22 +13,25 @@
             appearance: none;
             padding: 0.4rem 0.8rem;
             display: flex;
-            margin: 2rem auto;
+            margin: 1rem auto;
         }
 
         ul.pokemons {
+            border-radius: 10px;
             list-style: none;
+            width: 95%;
             margin: 0;
             padding: 0;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.4rem;
-
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            overflow-y: scroll;
+            scrollbar-color: #fff9 transparent;
+            scrollbar-width: thin;
             li {
                 border: 2px solid #fff9;
                 border-radius: 0.4rem;
                 text-align: center;
-
                 h4,
                 h5 {
                     margin: 0;
@@ -50,6 +53,42 @@
                 display: none;
             }
         }
+
+        div.pokedica{
+            background-color: #000000;
+            display: flex;
+            flex-direction: column;
+            width: 360px; 
+            height: 760px;
+            top: 50px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 30px;
+            
+            h1{
+                margin-top: 20px;
+                color: white;
+            }
+
+            img{
+                width: 100%;
+
+            }
+            a{
+                width: 160px;
+                height: 55px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 30px;
+                background-color: #851818;
+                margin-top: 70px;
+                h5{
+                    color: white;
+                }
+            }
+
+        }
     </style>
 </head>
 
@@ -69,13 +108,27 @@
             <h2>Obtén y muestra datos de la API de Pokedex</h2>
 
         </header>
-        <section>
+
+        <div id="inicio" class="pokedica">
+            <h1 class="titulo">POKEDICA</h1>
+            <img src="images/pokeball 1.png" alt="">
+            <a href="#lista" >
+                <h5>Ver pokemons</h5>
+            </a>
+        </div>
+
+        <div class="pokedica"  id="lista">
+            <h1 class="titulo">POKEDICA</h1>
             <select class="pk-generation"></select>
 
             <img class="loader" src="images/loader-bulb.gif" alt="">
 
             <ul class="pokemons"></ul>
-        </section>
+        </div>
+        <div id="tarjeta" class="pokedica">
+            
+        </div>
+        
     </main>
     <script>
 
@@ -154,10 +207,17 @@
 
                 let typeColor = data.types[0].type.name
                 //console.log(data)
-
+                let typeli=""
+                if( data.types.length>1){
+                    
+                }else{
+                    
+                }
                 pokemons.innerHTML += `<li style="border-color: ${types[typeColor]}; background: linear-gradient(black, ${types[typeColor]})">
-                                            <h4>${data.id}</h4>
+                                            <h4>#${data.id}</h4>
                                             <h5>${data.name}</h5>
+                                            <ul>
+                                            </ul>
                                             <img src="${data.sprites.front_default}">
                                         </li>`
             }
