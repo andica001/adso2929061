@@ -25,56 +25,164 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
+            height: 590px;
             overflow-y: scroll;
             scrollbar-color: #fff9 transparent;
             scrollbar-width: thin;
+
             li {
                 border: 2px solid #fff9;
                 border-radius: 0.4rem;
                 text-align: center;
+
+
                 h4,
                 h5 {
                     margin: 0;
                     text-align: center;
                     color: white;
                 }
+
+                ul.types {
+                    list-style: none;
+                    display: flex;
+                    border: none;
+                    gap: 10px;
+
+                    li {
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        border: none;
+
+                        &.normal {
+                            background: url(images/types-pokemons/lg-ico-normal.png) no-repeat center;
+                        }
+
+                        &.fire {
+                            background: url(images/types-pokemons/lg-ico-fire.png) no-repeat center;
+                        }
+
+                        &.water {
+                            background: url(images/types-pokemons/lg-ico-water.png) no-repeat center;
+                        }
+
+                        &.electric {
+                            background: url(images/types-pokemons/lg-ico-electric.png) no-repeat center;
+                        }
+
+                        &.grass {
+                            background: url(images/types-pokemons/lg-ico-grass.png) no-repeat center;
+                        }
+
+                        &.ice {
+                            background: url(images/types-pokemons/lg-ico-ice.png) no-repeat center;
+                        }
+
+                        &.fighting {
+                            background: url(images/types-pokemons/lg-ico-fight.png) no-repeat center;
+                        }
+
+                        &.poison {
+                            background: url(images/types-pokemons/lg-ico-poison.png) no-repeat center;
+                        }
+
+                        &.ground {
+                            background: url(images/types-pokemons/lg-ico-ground.png) no-repeat center;
+                        }
+
+                        &.flying {
+                            background: url(images/types-pokemons/lg-ico-flying.png) no-repeat center;
+                        }
+
+                        &.psychic {
+                            background: url(images/types-pokemons/lg-ico-psychic.png) no-repeat center;
+                        }
+
+                        &.bug {
+                            background: url(images/types-pokemons/lg-ico-bug.png) no-repeat center;
+                        }
+
+                        &.rock {
+                            background: url(images/types-pokemons/lg-ico-rock.png) no-repeat center;
+                        }
+
+                        &.ghost {
+                            background: url(images/types-pokemons/lg-ico-ghost.png) no-repeat center;
+                        }
+
+                        &.dragon {
+                            background: url(images/types-pokemons/lg-ico-dragon.png) no-repeat center;
+                        }
+
+                        &.dark {
+                            background: url(images/types-pokemons/lg-ico-dark.png) no-repeat center;
+                        }
+
+                        &.steel {
+                            background: url(images/types-pokemons/lg-ico-steel.png) no-repeat center;
+                        }
+
+                        &.fairy {
+                            background: url(images/types-pokemons/lg-ico-fairy.png) no-repeat center;
+                        }
+
+                        &.shadow {
+                            background: url(images/types-pokemons/) no-repeat center;
+                        }
+
+                        &.unknown {
+                            background: url(images/types-pokemons/) no-repeat center;
+                        }
+                    }
+                }
             }
-            &.hide{
+
+            &.hide {
                 display: none;
             }
 
         }
 
-        img.loader{
+        img.loader {
             display: flex;
             margin: 8rem auto;
             width: 160px;
-            &.hide{
+
+            &.hide {
                 display: none;
             }
         }
 
-        div.pokedica{
+        div.pokedica {
+
             background-color: #000000;
             display: flex;
             flex-direction: column;
-            width: 360px; 
+            width: 360px;
             height: 760px;
             top: 50px;
             justify-content: center;
             align-items: center;
             border-radius: 30px;
-            
-            h1{
+
+            a.arrow {
+                margin-top: 0px;
+                padding: 0.8rem;
+                width: 50px;
+            }
+
+            h1 {
                 margin-top: 20px;
                 color: white;
             }
 
-            img{
+            img {
                 width: 100%;
 
             }
-            a{
+
+            a {
                 width: 160px;
                 height: 55px;
                 display: flex;
@@ -83,11 +191,137 @@
                 border-radius: 30px;
                 background-color: #851818;
                 margin-top: 70px;
-                h5{
+
+                h5 {
                     color: white;
                 }
             }
 
+            &.hide {
+                display: none;
+            }
+
+        }
+
+        div.tj2 {
+            width: 95%;
+            height: 95%;
+            border-radius: 15px;
+            border: 2px solid #fff9;
+            border-radius: 0.4rem;
+            text-align: center;
+
+            a.arrow {
+                margin-top: 0px;
+                padding: 0.8rem;
+                width: 50px;
+            }
+
+            h4,
+            h5 {
+                margin: 0;
+                text-align: center;
+                color: white;
+            }
+
+            img {
+                height: 250px;
+                width: 250px;
+            }
+
+            ul.types {
+                list-style: none;
+                display: flex;
+                border: none;
+                gap: 10px;
+
+                li {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    border: none;
+
+                    &.normal {
+                        background: url(images/types-pokemons/lg-ico-normal.png) no-repeat center;
+                    }
+
+                    &.fire {
+                        background: url(images/types-pokemons/lg-ico-fire.png) no-repeat center;
+                    }
+
+                    &.water {
+                        background: url(images/types-pokemons/lg-ico-water.png) no-repeat center;
+                    }
+
+                    &.electric {
+                        background: url(images/types-pokemons/lg-ico-electric.png) no-repeat center;
+                    }
+
+                    &.grass {
+                        background: url(images/types-pokemons/lg-ico-grass.png) no-repeat center;
+                    }
+
+                    &.ice {
+                        background: url(images/types-pokemons/lg-ico-ice.png) no-repeat center;
+                    }
+
+                    &.fighting {
+                        background: url(images/types-pokemons/lg-ico-fight.png) no-repeat center;
+                    }
+
+                    &.poison {
+                        background: url(images/types-pokemons/lg-ico-poison.png) no-repeat center;
+                    }
+
+                    &.ground {
+                        background: url(images/types-pokemons/lg-ico-ground.png) no-repeat center;
+                    }
+
+                    &.flying {
+                        background: url(images/types-pokemons/lg-ico-flying.png) no-repeat center;
+                    }
+
+                    &.psychic {
+                        background: url(images/types-pokemons/lg-ico-psychic.png) no-repeat center;
+                    }
+
+                    &.bug {
+                        background: url(images/types-pokemons/lg-ico-bug.png) no-repeat center;
+                    }
+
+                    &.rock {
+                        background: url(images/types-pokemons/lg-ico-rock.png) no-repeat center;
+                    }
+
+                    &.ghost {
+                        background: url(images/types-pokemons/lg-ico-ghost.png) no-repeat center;
+                    }
+
+                    &.dragon {
+                        background: url(images/types-pokemons/lg-ico-dragon.png) no-repeat center;
+                    }
+
+                    &.dark {
+                        background: url(images/types-pokemons/lg-ico-dark.png) no-repeat center;
+                    }
+
+                    &.steel {
+                        background: url(images/types-pokemons/lg-ico-steel.png) no-repeat center;
+                    }
+
+                    &.fairy {
+                        background: url(images/types-pokemons/lg-ico-fairy.png) no-repeat center;
+                    }
+
+                    &.shadow {
+                        background: url(images/types-pokemons/) no-repeat center;
+                    }
+
+                    &.unknown {
+                        background: url(images/types-pokemons/) no-repeat center;
+                    }
+                }
+            }
         }
     </style>
 </head>
@@ -112,12 +346,13 @@
         <div id="inicio" class="pokedica">
             <h1 class="titulo">POKEDICA</h1>
             <img src="images/pokeball 1.png" alt="">
-            <a href="#lista" >
+            <a href="javascript:;" class="entrar">
                 <h5>Ver pokemons</h5>
             </a>
         </div>
 
-        <div class="pokedica"  id="lista">
+        <div class="pokedica hide" id="lista">
+            <a class="arrow" href="#inicio"><img src="images/arrow.svg" alt=""></a>
             <h1 class="titulo">POKEDICA</h1>
             <select class="pk-generation"></select>
 
@@ -125,10 +360,9 @@
 
             <ul class="pokemons"></ul>
         </div>
-        <div id="tarjeta" class="pokedica">
-            
+        <div id="tarjeta" class="pokedica hide">
         </div>
-        
+
     </main>
     <script>
 
@@ -174,7 +408,7 @@
 
         // select
         const pkGeneration = document.querySelector('.pk-generation')
-        
+
         pkGeneration.innerHTML = `<option value="">Select a generation...</option>`
         generations['range'].forEach((element, index) => {
             pkGeneration.innerHTML += `<option value="${index}">Generation ${++index}</option>`
@@ -189,17 +423,31 @@
 
         })
 
+        const entrar = document.querySelector('.entrar')
+        const inicio = document.querySelector('#inicio')
+        const lista = document.querySelector('#lista')
+        entrar.addEventListener('click', function (e) {
+
+            inicio.classList.add('hide')
+            lista.classList.remove('hide')
+        })
+
         //Elements 
         const pokemons = document.querySelector('.pokemons')
         const loader = document.querySelector('.loader')
+
+        
+
+
+
         const loadPokemon = async (start, end) => {
             pokemons.classList.add('hide')
             loader.classList.remove('hide')
             pokemons.innerHTML = ""
-            setTimeout(()=>{
+            setTimeout(() => {
                 loader.classList.add('hide')
                 pokemons.classList.remove('hide')
-            },4000)
+            }, 4000)
             for (let pk = start; pk <= end; pk++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${pk}`
                 const response = await fetch(url)
@@ -207,16 +455,17 @@
 
                 let typeColor = data.types[0].type.name
                 //console.log(data)
-                let typeli=""
-                if( data.types.length>1){
-                    
-                }else{
-                    
+                let typeli = ""
+                if (data.types.length > 1) {
+                    typeli = `<li class="${data.types[0].type.name}"></li><li class="${data.types[1].type.name}"></li>`
+                } else {
+                    typeli = `<li class="${data.types[0].type.name}"></li>`
                 }
-                pokemons.innerHTML += `<li style="border-color: ${types[typeColor]}; background: linear-gradient(black, ${types[typeColor]})">
+                pokemons.innerHTML += `<li onclick="showPokemon(${data.id})" style="border-color: ${types[typeColor]}; background: linear-gradient(black, ${types[typeColor]})">
                                             <h4>#${data.id}</h4>
                                             <h5>${data.name}</h5>
-                                            <ul>
+                                            <ul class="types">
+                                                ${typeli}
                                             </ul>
                                             <img src="${data.sprites.front_default}">
                                         </li>`
@@ -224,6 +473,57 @@
 
         }
         loadPokemon(1, 151)
+
+        async function showPokemon(pk) {
+            const url = `https://pokeapi.co/api/v2/pokemon/${pk}`
+            const response = await fetch(url)
+            const data = await response.json()
+            //const typez=data.
+            //Obtengo el div donde voy almacenar la informacion
+            tarjeta = document.getElementById('tarjeta')
+            document.getElementById('lista').classList.add('hide')
+            tarjeta.classList.remove('hide')
+            //limpio ese div
+            tarjeta.innerHTML = ""
+
+            let cadena = ""
+            let typeli = ""
+
+
+            const statsHTML = data.stats.map(stat => {
+                const value = stat.base_stat;
+                return `
+                    <div style="position: relative; margin-bottom: 10px;">
+                        <strong>${stat.stat.name.toUpperCase()}:</strong> ${value}
+                        <div style="width: 100%; background: #333; border-radius: 10px; overflow: hidden; height: 14px;">
+                            <div style="width: ${value > 100 ? 100 : value}%; background: #4CAF50; height: 100%;"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            if (data.types.length > 1) {
+                typeli = `<li class="${data.types[0].type.name}"></li><li class="${data.types[1].type.name}"></li>`
+            } else {
+                typeli = `<li class="${data.types[0].type.name}"></li>`
+            }
+            cadena += `<div class="tj2" style="background: linear-gradient(black,${types[data.types[0].type.name]});">
+                            <a class="arrow" href="#lista"><img src="images/arrow.svg" alt="" ></a>
+                            <h4>#${data.id}</h4>
+                            <h5>${data.name}</h5>
+                            <ul class="types">
+                                ${typeli}
+                            </ul>
+                            <img src="${data.sprites.front_default}">
+                            ${statsHTML}
+                
+                    </div>`
+            tarjeta.innerHTML += cadena
+
+
+
+        }
+
     </script>
 </body>
 
