@@ -508,7 +508,7 @@
                 typeli = `<li class="${data.types[0].type.name}"></li>`
             }
             cadena += `<div class="tj2" style="background: linear-gradient(black,${types[data.types[0].type.name]});">
-                            <a class="arrow" href="#lista"><img src="images/arrow.svg" alt="" ></a>
+                            <a class="arrow" onclick="devolver()" href="#"><img src="images/arrow.svg" alt="" ></a>
                             <h4>#${data.id}</h4>
                             <h5>${data.name}</h5>
                             <ul class="types">
@@ -522,6 +522,11 @@
 
 
 
+        }
+
+        function devolver() {
+            document.getElementById('tarjeta').classList.add('hide')
+            document.getElementById('lista').classList.remove('hide')
         }
 
     </script>
