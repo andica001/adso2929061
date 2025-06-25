@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19 - Events</title>
+    <link rel="stylesheet" href="../css/Styles.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        .section-dbl {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 0.6rem;
+
+            button {
+                background-color: #b7a63c;
+                border-radius: 5px;
+                border: none;
+                color: #fff;
+                cursor: pointer;
+                padding: 0.6rem;
+                width: 160px;
+            }
+        }
+
+        .section-keyup {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 0.6rem;
+
+            input {
+                border: 2px solid #b7a63c;
+                border-radius: 5px;
+                padding: 0.5rem;
+                width: 140px;
+            }
+        }
+
+        .section-change {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 0.6rem;
+
+            select {
+                border: 2px solid #b7a63c;
+                border-radius: 5px;
+                padding: 0.5rem;
+                width: 160px;
+            }
+
+            p {
+                zoom: 3;
+                margin: 0;
+            }
+        }
+
+        .event-mouse {
+            background-color: #fff;
+            border-radius: 50%;
+            border: 4px solid #b7a63c;
+            margin: 0.6rem auto;
+            display: flex;
+            object-fit: cover;
+            height: 200px;
+            width: 200px;
+        }
+
+        .event-scroll {
+            text-align: center;
+        }
+
+        div.basketball {
+            position: relative;
+            margin-block: 2rem;
+            height: 60px;
+            div{
+                position: absolute;
+                zoom: 3;
+                &.event-drag {
+                    cursor: move;
+                    top: 0;
+                    left: 0;
+                }
+
+                &.event-drop {
+                    top: 0;
+                    left: 120px;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body class="js">
+    <nav>
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <path fill="#ffffff"
+                    d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z">
+                </path>
+            </svg>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <h1>19 - Events</h1>
+            <h2>Maneja interacciones de usuario con escuchadores de eventos.</h2>
+
+        </header>
+        <section>
+            <h3>Event: onload</h3>
+            <h4 class="event-load"></h4>
+            <h3>Event: dblclick</h3>
+            <div class="section-dbl">
+                <button>Button</button>
+                <h4 class="event-dbl">0 Double clicks</h4>
+            </div>
+            <h3>Event: onkeyup</h3>
+            <div class="section-keyup">
+                <input type="text" placeholder="Enter text...">
+                <h4 class="event-keyup">null</h4>
+            </div>
+            <h3>Event: onresize</h3>
+            <h4 class="event-resize">No resize</h4>
+            <h3>Event: onchange</h3>
+            <div class="section-change">
+                <select>
+                    <option value="🙂" selected>Select an animal...</option>
+                    <option value="🐮">🐮 Cow</option>
+                    <option value="🐷">🐷 Pig</option>
+                    <option value="🐶">🐶 Dog</option>
+                    <option value="🦊">🦊 Fox</option>
+                    <option value="🐻">🐻 Bear</option>
+                </select>
+                <p class="event-change">🙂</p>
+            </div>
+            <h3>Event: onmouseover</h3>
+            <img src="images/jiji1.webp" class="event-mouse" alt="Jiji">
+            <h3>Event: Scroll</h3>
+            <p class="event-scroll">🧑‍🏫</p>
+            <h3>Event: Drag|Drop</h3>
+            <div class="basketball">
+                <div class="event-drag" draggable="true">🏀</div>
+                <div class="event-drop">🧺</div>
+            </div>
+        </section>
+    </main>
+    <script>
+        // Elements
+        const eventLoad = document.querySelector('.event-load');
+        const eventDbl = document.querySelector('.event-dbl');
+        const eventKeyup = document.querySelector('.event-keyup');
+        const eventResize = document.querySelector('.event-resize');
+        const eventChange = document.querySelector('.event-change');
+        const eventMouse = document.querySelector('.event-mouse');
+        const eventScroll = document.querySelector('.event-scroll');
+        const eventDrag = document.querySelector('.event-drag');
+        const eventDrop = document.querySelector('.event-drop');
+
+        // Event: onload
+        window.onload = function () {
+            eventLoad.textContent = `The page has loaded successfully!`;
+        };
+
+        // Event: dblclick
+        const button = document.querySelector('.section-dbl button');
+        button.addEventListener('dblclick', () => {
+            let count = 0;
+            eventDbl.textContent = `${++count} Double clicks`;
+        });
+
+        // Event: onkeyup
+        const input = document.querySelector('.section-keyup input');
+        input.onkeyup = function (event) {
+            eventKeyup.textContent = `${this.value}`
+        };
+
+        // Event: onresize
+        window.onresize = function () {
+            eventResize.textContent = `The window has been resized to ${window.innerWidth}px X ${window.innerHeight}px`;
+        };
+
+        // Event: onchange
+        const select = document.querySelector('.section-change select');
+        select.onchange = function () {
+            eventChange.textContent = `${this.value}`;
+        };
+
+        // Event onmouseenter = onmouseover
+        eventMouse.addEventListener('mouseenter', function () {
+            this.src = `images/jiji2.webp`;
+        });
+
+        eventMouse.addEventListener('mouseleave', function () {
+            this.src = `images/jiji1.webp`;
+        });
+
+        // Event: onscroll
+        let lastScrollY = 0
+        let size = 1
+        window.addEventListener('scroll', function () {
+            const scrollPositionY = window.scrollY
+            if (scrollPositionY > lastScrollY) {
+                if (size < 15) {
+                    size += 0.5;
+                    eventScroll.style.zoom = `${size}`
+                }
+            } else {
+                if (size > 1) {
+                    size -= 0.5;
+                    eventScroll.style.zoom = `${size}`
+                }
+            }
+            lastScrollY = scrollPositionY;
+
+        });
+
+        // Event: ondragstart | ondragend
+        eventDrag.addEventListener('dragstart', function (event) {
+            event.dataTransfer.setData('text/plain', 'eventDrag');
+            setTimeout(() => {
+                this.style.opacity = '0';
+            }, 0);
+        });
+
+
+        eventDrag.addEventListener('dragend', function () {            
+            this.style.opacity = '1';
+        });
+
+        eventDrop.addEventListener('dragover', function (event) {
+            event.preventDefault();
+        });
+        eventDrop.addEventListener('drop', function (event) {
+            event.preventDefault();
+            const data = event.dataTransfer.getData('text/plain');
+            if (data === 'eventDrag') {
+                eventDrag.style.left = '120px';
+            }
+        });
+    </script>
+</body>
+
+</html>

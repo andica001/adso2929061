@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 - Methods String</title>
+    <link rel="stylesheet" href="../css/Styles.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        textarea {
+            height: 80px;
+            border: 2px solid #b7a63c;
+            border-radius: 5px;
+            padding: 0.5rem;
+            width: 380px;
+        }
+
+        div.row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.6rem;
+
+            input[type=text] {
+                border: 2px solid #b7a63c;
+                border-radius: 5px;
+                padding: 0.5rem;
+                width: 120px;
+            }
+
+            input[type=radio] {
+                accent-color: #b7a63c;
+            }
+        }
+
+        button.btn-generate {
+            background-color: #b7a63c;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 0.6rem;
+            display: block;
+            margin: 0 auto;
+            width: 160px;
+        }
+
+        ul.output {
+            padding-left: 1rem;
+        }
+    </style>
+</head>
+
+<body class="js">
+    <nav>
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <path fill="#ffffff"
+                    d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z">
+                </path>
+            </svg>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <h1>20 - Methods String</h1>
+            <h2>Manipula texto usando métodos de cadenas</h2>
+
+        </header>
+        <section>
+            <textarea placeholder="Enter a paragraph"></textarea>
+            <div class="row">
+                <label>
+                    <input type="radio" class="upper" name="transf">
+                    UPPERCASE
+                </label>
+                OR
+                <label>
+                    <input type="radio" class="lower" name="transf" checked>
+                    lowercase
+                </label>
+            </div>
+            <!--  -->
+            <div class="row">
+                <input type="text" class="word-ori" placeholder="Word Origin">
+                For
+                <input type="text" class="word-rep" placeholder="Word Replace">
+            </div>
+            <!--  -->
+            <div class="row">
+                <input type="text" class="pos-s" placeholder="Start Pos">
+                To
+                <input type="text" class="pos-f" placeholder="Final Pos">
+            </div>
+            <button class="btn-generate">Generate</button>
+            <ul class="output"></ul>
+        </section>
+    </main>
+    <script>
+        //elements
+        const textArea = document.querySelector('textarea');
+        const upper = document.querySelector('.upper');
+        const lower = document.querySelector('.lower');
+        const wordOri = document.querySelector('.word-ori');
+        const wordRep = document.querySelector('.word-rep');
+
+        const posS = document.querySelector('.pos-s');
+        const posF = document.querySelector('.pos-f');
+
+        const btnGenerate = document.querySelector('.btn-generate');
+        const output = document.querySelector('.output');
+
+        //variables
+        let isUpper = false;
+
+        //events
+        upper.addEventListener('click', () => {
+            isUpper = true;
+        });
+
+        lower.addEventListener('click', () => {
+            isUpper = false;
+        });
+        btnGenerate.addEventListener('click', () => {
+            if (textArea.value.length > 0) {
+                output.innerHTML = `<li> <strong>Original Text:</strong>${textArea.value}</li>
+                                    <li> <strong>Length:</strong> ${textArea.value.length} </li>`;
+
+                if (isUpper) {
+                    output.innerHTML += `<li> <strong>Uppercase:</strong> ${textArea.value.toUpperCase()}</li>`;
+                } else {
+                    output.innerHTML += `<li> <strong>Lowercase:</strong> ${textArea.value.toLowerCase()}</li>`;
+                }
+
+                if (wordOri.value.length > 0 && wordRep.value.length > 0) {
+                    const regex = new RegExp(wordOri.value, 'g');
+                    const replacedText = textArea.value.replace(regex, wordRep.value);
+                    output.innerHTML += `<li> <strong>Replaced:</strong> ${replacedText}</li>`;
+                } else {
+                    output.innerHTML += `<li> <strong>No replacement made.</strong></li>`;
+                }
+
+
+                if (posS.value.length > 0 && posF.value.length > 0) {
+                    const startPos = parseInt(posS.value);
+                    const endPos = parseInt(posF.value);
+                    if (!isNaN(startPos) && !isNaN(endPos) && startPos >= 0 && endPos <= textArea.value.length) {
+                        const slicedText = textArea.value.slice(startPos, endPos);
+                        output.innerHTML += `<li> <strong>Sliced Text:</strong> ${slicedText}</li>`;
+                    } else {
+                        output.innerHTML += `<li> <strong>Invalid positions for slicing.</strong></li>`;
+                    }
+                } else {
+                    output.innerHTML += `<li> <strong>No slicing made.</strong></li>`;
+                }
+
+                clearForms();
+
+            } else {
+                alert('Please enter a paragraph');
+            }
+        });
+
+        function clearForms() {
+            textArea.value = '';
+            wordOri.value = '';
+            wordRep.value = '';
+            posS.value = '';
+            posF.value = '';
+            upper.checked = false;
+            lower.checked = true;
+            isUpper = false;
+        }
+    </script>
+</body>
+
+</html>
