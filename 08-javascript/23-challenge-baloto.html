@@ -172,11 +172,13 @@
                     clearInterval(interval);
                 }
                 element.textContent = ++count;
-            }, 150);
+            }, 200);
         }
 
         // Event listener for button click
         btnTragaperras.addEventListener('click', () => {
+            btnTragaperras.disabled = true; // Disable button to prevent multiple clicks
+            btnTragaperras.textContent = 'Cargando...';
             getRandomNumber(0, 9, n1);
             getRandomNumber(0, 9, n2);
             getRandomNumber(0, 9, n3);
@@ -192,7 +194,9 @@
                 else {
                     alert('Lo siento, no has ganado el Jackpot. Inténtalo de nuevo.');
                 }
-            }, 900);
+                btnTragaperras.textContent = 'JACKPOT'; // Reset button text
+                btnTragaperras.disabled = false; // Re-enable button
+            }, 3000);
             
 
         });
