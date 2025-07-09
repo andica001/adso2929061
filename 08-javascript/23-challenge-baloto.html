@@ -4,9 +4,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>00 - Template</title>
+    <title>23 - Callenge Baloto</title>
     <link rel="stylesheet" href="../css/Styles.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem auto;
+            background-color: transparent;
+
+            div.contenedor {
+
+                background-color: brown;
+                border-radius: 20px;
+                border: 2px solid #ffffff;
+                width: 360px;
+                height: 610px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                h4.titulo {
+                    margin-top: 60px;
+                    color: #ffffff;
+                    font-size: 2rem;
+                }
+
+                div.image-tragaperras {
+                    position: relative;
+                    margin-top: 60px;
+                    width: 360px;
+
+                    img {
+                        position: absolute;
+                    }
+
+                    h2 {
+                        position: absolute;
+
+                        &.n1 {
+                            top: 25px;
+                            left: 20px;
+                            color: #000000;
+                            font-size: 3rem;
+                        }
+
+                        &.n2 {
+                            top: 25px;
+                            left: 70px;
+                            color: #000000;
+                            font-size: 3rem;
+                        }
+
+                        &.n3 {
+                            top: 25px;
+                            left: 115px;
+                            color: #000000;
+                            font-size: 3rem;
+                        }
+
+                        &.n4 {
+                            top: 25px;
+                            left: 160px;
+                            color: #000000;
+                            font-size: 3rem;
+                        }
+
+                        &.s {
+                            top: 25px;
+                            left: 205px;
+                            color: #ffffff;
+                            font-size: 3rem;
+                        }
+
+                        &.s1 {
+                            top: 25px;
+                            left: 255px;
+                            color: #ffffff;
+                            font-size: 3rem;
+                        }
+
+                        &.s2 {
+                            top: 25px;
+                            left: 300px;
+                            color: #ffffff;
+                            font-size: 3rem;
+                        }
+                    }
+
+                }
+
+                button.btn-tragaperras {
+                    margin-top: 250px;
+                    background-color: #ffffff;
+                    color: brown;
+                    font-size: 2rem;
+                    padding: 10px 20px;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+
+                    &:hover {
+                        background-color: #f0f0f0;
+                    }
+                }
+
+            }
+        }
+    </style>
+
 </head>
 
 <body class="js">
@@ -21,13 +130,73 @@
     </nav>
     <main>
         <header>
-            <h1>00 - Template</h1>
+            <h1>23 - Callenge Baloto</h1>
             <h2>Usa métodos matemáticos para cálculos avanzados.</h2>
 
         </header>
         <section>
+            <div class="contenedor">
+                <h4 class="titulo">TRAGAPERRAS</h4>
+                <div class="image-tragaperras">
+                    <img src="images/tragaperras.png" alt="">
+                    <h2 class="n1">-</h2>
+                    <h2 class="n2">-</h2>
+                    <h2 class="n3">-</h2>
+                    <h2 class="n4">-</h2>
+                    <h2 class="s">-</h2>
+                    <h2 class="s1">-</h2>
+                    <h2 class="s2">-</h2>
+                </div>
+                <button class="btn-tragaperras">JACKPOT</button>
 
+            </div>
         </section>
     </main>
+    <script>
+        // Elements
+        const btnTragaperras = document.querySelector('.btn-tragaperras');
+        const n1 = document.querySelector('.n1');
+        const n2 = document.querySelector('.n2');
+        const n3 = document.querySelector('.n3');
+        const n4 = document.querySelector('.n4');
+        const s1 = document.querySelector('.s1');
+        const s2 = document.querySelector('.s2');
+
+        // Funccion para generar el numero aleatorio
+        function getRandomNumber(min, max, element) {
+            let rand = Math.floor(Math.random() * (max - min)) + min;
+            let count = 0
+
+            const interval = setInterval(() => {
+                if (count == rand) {
+                    clearInterval(interval);
+                }
+                element.textContent = ++count;
+            }, 150);
+        }
+
+        // Event listener for button click
+        btnTragaperras.addEventListener('click', () => {
+            getRandomNumber(0, 9, n1);
+            getRandomNumber(0, 9, n2);
+            getRandomNumber(0, 9, n3);
+            getRandomNumber(0, 9, n4);
+            getRandomNumber(0, 9, s1);
+            getRandomNumber(0, 9, s2);
+
+            setTimeout(() => {
+                // Check for jackpot
+                if (n1.textContent === n2.textContent && n2.textContent === n3.textContent && n3.textContent === n4.textContent) {
+                    alert('¡Felicidades! Has ganado el Jackpot!');
+                }
+                else {
+                    alert('Lo siento, no has ganado el Jackpot. Inténtalo de nuevo.');
+                }
+            }, 900);
+            
+
+        });
+    </script>
 </body>
+
 </html>
