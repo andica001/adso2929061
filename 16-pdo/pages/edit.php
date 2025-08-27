@@ -1,3 +1,13 @@
+<?php
+include '../config/app.php';
+include '../config/database.php';
+include '../config/security.php';
+
+if($_GET){
+    $pet=showPet($_GET['id'], $conx);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,17 +15,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tu mejor amigo en casa - Edit</title>
-    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="<?= $css ?>stylee.css">
 </head>
 <body>
     <main class="edit">
         <header>
             <h2>Modificar Mascota</h2>
-            <a href="dashboard.html" class="back"></a>
-            <a href="index.html" class="close"></a>
+            <a href="dashboard.php" class="back"></a>
+            <a href="../close.php" class="close"></a>
         </header>
         <figure class="photo-preview">
-            <img src="imgs/photo-lg-1.svg" alt="">
+            <img id="preview" src="../uploads/<?=$pet['photo']?>" alt="">
         </figure>
         <form action="" method="post">
             <input type="text" name="name" placeholder="Nombre" value="Reigner">

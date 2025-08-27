@@ -118,4 +118,74 @@ function addPet($name, $specie_id, $breed_id, $sex_id, $photo, $conx)
     }
 }
 
+function showPet($id, $conx){
+    try {
+        $sql = "SELECT p.name as name,
+                        p.photo as photo,
+                        s.name as specie,
+                        b.name as breed,
+                        x.name as sex
+                FROM pets as p,
+                    species as s,
+                    breeds as b,
+                    sexes as x
+                WHERE s.id=p.specie_id
+                    AND b.id=p.breed_id
+                    AND p.id = :id";
+        $stmt = $conx->prepare($sql);
+        $stmt->bindparam(":id", $id);
+        $stmt->execute();
+        return $stmt->fetch();
+    } catch (PDOException $e) {
+        echo "Error: ". $e->getMessage();
+    }
+}
+function deletePet($id, $conx){
+    try {
+        
+        $sql = "DELETE
+                FROM pets
+                WHERE id = :id";
+        $stmt = $conx->prepare($sql);
+        $stmt->bindparam(":id", $id);
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }    
+    catch (PDOException $e) {
+        echo "Error: ". $e->getMessage();
+    }  
+}
+
+function obtenerPhoto($id, $conx){
+    try {
+        $sql = "SELECT photo
+                FROM pets
+                where id = :id";
+        $stmt = $conx->prepare($sql);
+        $stmt->bindparam(":id", $id);
+        $stmt->execute();
+        return $stmt->fetch();
+    } catch (PDOException $e) {
+        echo "Error: ". $e->getMessage();
+    }
+            
+}
+
+function listPet($id, $conx){
+    try {
+        $sql = "SELECT * 
+                FROM pets
+                WHERE id= :id";
+                $stmt = $conx->prepare($sql);
+                $stmt->bindparam(":id", $id);
+                $stmt->execute();
+                return $stmt->fetch();
+    } catch (PDOException $e) {
+        echo "Error: ". $e->getMessage();
+    }
+
+}
 ?>
