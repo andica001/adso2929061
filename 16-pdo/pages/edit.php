@@ -4,7 +4,7 @@ include '../config/database.php';
 include '../config/security.php';
 
 if($_GET){
-    $pet=showPet($_GET['id'], $conx);
+    $pet=listPet($_GET['id'], $conx);
 }
 ?>
 
@@ -27,32 +27,95 @@ if($_GET){
         <figure class="photo-preview">
             <img id="preview" src="../uploads/<?=$pet['photo']?>" alt="">
         </figure>
-        <form action="" method="post">
-            <input type="text" name="name" placeholder="Nombre" value="Reigner">
+        <form action="" method="post" enctype="multipart/form-data">
+            <input type="text" name="name" placeholder="Nombre" value="<?php if(isset($pet['name'])) echo($pet['name'])?>">
             <div class="select">
-                <select name="raza">
+                <select name="specie_id">
                     <option value="">Seleccione Raza...</option>
-                    <option value="1">Corgi</option>
-                    <option value="2" selected>Bulldog</option>
+                    <?php $species = listSpecies($conx) ?>
+                    <?php foreach($species as $specie): ?>
+                    <option value="<?=$specie['id']?>" <?php if(isset($pet['specie_id']) && $pet['specie_id'] == $specie['id']) echo("selected")?>><?=$specie['name']?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
             <div class="select">
-                <select name="raza">
+                <select name="breed_id">
                     <option value="">Seleccione Categoría...</option>
-                    <option value="1" selected>Perro</option>
-                    <option value="2">Gato</option>
+                    <?php $breeds = listBreeds($conx) ?>
+                    <?php foreach($breeds as $breed): ?>
+                    <option value="<?=$breed['id']?>" <?php if(isset($pet['breed_id']) && $pet['breed_id'] == $breed['id']) echo("selected")?>><?=$breed['name']?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
             <button type="button" class="upload">Subir Foto</button>
+            <input type="file" name="photo" id="photo" accept="image/*" style="display: none;" value="<?=$pet['photo']?>">
             <div class="select">
-                <select name="raza">
+                <select name="sex_id">
                     <option value="">Seleccione Genero...</option>
-                    <option value="1">Hembra</option>
-                    <option value="2" selected>Macho</option>
+                    <?php $sexes = listSexes($conx) ?>
+                    <?php foreach($sexes as $sex): ?>
+                    <option value="<?=$sex['id']?>" <?php if(isset($pet['sex_id']) && $pet['sex_id'] == $sex['id']) echo("selected")?>><?=$sex['name']?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
             <button class="update">Modificar</button>
         </form>
+        <?php
+            if($_POST){
+                $errors=0;
+                
+                // Comprobar si otros campos están vacíos
+                if(empty($_POST['name']) || empty($_POST['specie_id']) || empty($_POST['breed_id']) || empty($_POST['sex_id'])){
+                    $errors++;
+                }
+
+                if ($errors == 0){
+                    $name=$_POST['name'];
+                    $specie_id=$_POST['specie_id'];
+                    $breed_id=$_POST['breed_id'];
+                    $sex_id =$_POST['sex_id'];
+                    $photo_to_update = $pet['photo']; // Asumir que no hay actualización de foto
+
+                    // Comprobar si se subió una nueva foto
+                    if (!empty($_FILES['photo']['name'])) {
+                        $photo_to_update = time().'.'.pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
+                        move_uploaded_file($_FILES['photo']['tmp_name'], '../uploads/'.$photo_to_update);
+                        // Eliminar la foto antigua
+                        if (file_exists('../uploads/' . $pet['photo']) && !empty($pet['photo'])) {
+                            unlink("../uploads/" . $pet['photo']);
+                        }
+                    }
+
+                    if(updatePet($pet['id'], $name, $specie_id, $breed_id, $sex_id, $photo_to_update, $conx)){
+                        $_SESSION['message']= "La mascota: $name fue actualizada con exito";
+                        echo "<script> window.location.replace('dashboard.php') </script>";
+                    } else {
+                        $_SESSION['error'] = "Hubo un problema al actualizar la mascota.";
+                    }
+
+                }else{
+                    $_SESSION['error']="Todos los campos son requeridos";
+                }
+
+                if(isset($_SESSION['error'])){
+                    include('errors.php');
+                    unset($_SESSION['error']);
+                }
+            }
+        ?>
     </main>
+    <script>
+        const preview=document.querySelector('#preview')
+        const upload=document.querySelector('.upload')
+        const photo=document.querySelector('#photo')
+
+        upload.addEventListener('click', function(e){
+            photo.click()
+        })
+
+        photo.addEventListener('change', function(e){
+            preview.src=window.URL.createObjectURL(this.files[0])
+        })
+    </script>
 </body>
 </html>

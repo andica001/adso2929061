@@ -77,9 +77,9 @@
                     $sex_id =$_POST['sex_id'];
                     $photo=time().'.'.pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
                     echo $photo;
-                    move_uploaded_file($_FILES['photo']['tmp_name'], '../uploads/'.$photo);
 
                     if(addPet($name, $specie_id, $breed_id, $sex_id, $photo, $conx)){
+                        move_uploaded_file($_FILES['photo']['tmp_name'], '../uploads/'.$photo);
                         $_SESSION['message']= "la mascota: $name fue adicionada con exito";
                         echo "<script> window.location.replace('dashboard.php') </script>";
                     }
