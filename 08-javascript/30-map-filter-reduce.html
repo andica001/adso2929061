@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30 MAP\Filter\reduce</title>
+    <link rel="stylesheet" href="../css/Styles.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+
+<body class="js">
+    <nav>
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <path fill="#ffffff"
+                    d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z">
+                </path>
+            </svg>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <h1>30 MAP\Filter\reduce</h1>
+            <h2>Transforma arreglos usando métodos map, filter y reduce</h2>
+
+        </header>
+        <section>
+            <h3>Map</h3>
+            <h4 class="map"></h4>
+            <h3>Filter</h3>
+            <h4 class="filter"></h4>
+            <h3>Reduce</h3>
+            <h4 class="reduce"></h4>
+        </section>
+    </main>
+    <script>
+        //elements
+        const map= document.querySelector('.map')
+        const filter= document.querySelector('.filter')
+        const reduce= document.querySelector('.reduce')
+
+        //Array of Objects
+        const dragonBall = [
+            {id: 1, name: 'Goku', height: 175, power: 9000, race: 'Saiyan'},
+            {id: 2, name: 'Vegeta', height: 164, power: 8500, race: 'Saiyan'},
+            {id: 3, name: 'Piccolo', height: 226, power: 3500, race: 'Namekaiin'},
+            {id: 4, name: 'Krillin', height: 145, power: 1500, race: 'Human'},
+            {id: 5, name: 'Frieza', height: 158, power: 12000, race: 'Alien'}
+        ]
+
+        //Map
+        const characters = dragonBall.map(({name, race})=>`${name}: ${race} <br>`)
+        characters.forEach(info => {
+            map.innerHTML += info
+        })
+
+        //filter
+        const strongers = dragonBall.filter(character=> character.power>8500)
+        strongers.forEach(strong =>{
+            filter.innerHTML += `${strong.name}: ${strong.power} <br>`
+        })
+
+        //reduce
+        const totalPower = dragonBall.reduce((sum, character)=> sum + character.power, 0)
+        const avgHeight = dragonBall.reduce((avg, character)=> avg + character.height/dragonBall.length, 0)
+
+        reduce.innerHTML = `Total Sum Power: ${totalPower} <br>`
+        reduce.innerHTML += `Average Height: ${avgHeight}`
+    </script>
+</body>
+
+</html>
