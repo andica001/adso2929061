@@ -7,6 +7,110 @@
     <title>28 - Challenge</title>
     <link rel="stylesheet" href="../css/Styles.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        .hidden {
+            display: none !important;
+        }
+
+        .inicio {
+            background: url(images/Fondo_rana_ok.png) no-repeat center;
+            width: 380px;
+            height: 700px;
+            border-radius: 40px !important;
+            padding: 20px;
+            margin-top: 20px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .juego {
+            position: relative;
+            background: url(images/Fondo_rana_juego.png) no-repeat center;
+            width: 380px;
+            height: 700px;
+            border-radius: 40px !important;
+            padding: 20px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 32px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Arial', sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            background-color: #3e8e41;
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        div.frog {
+            position: absolute;
+            background: url(images/rana1.png) no-repeat;
+            background-position-x: 0;
+            background-position-y: ;
+            border-radius: 0.4rem;
+            height: 32px;
+            margin: 2rem auto;
+            width: 44px;
+            top: 600px;
+            left: 200px;
+        }
+
+        .car {
+            position: absolute;
+            left: 10px;
+        }
+
+        #car1 {
+            background: url(images/car1.png) no-repeat;
+            width: 85px;
+            height: 44px;
+            top: 370px
+        }
+
+        #car2 {
+            background: url(images/car2.png) no-repeat;
+            width: 245px;
+            height: 44px;
+            top: 430px
+        }
+
+        #car3 {
+            background: url(images/car3.png) no-repeat;
+            width: 124px;
+            height: 62px;
+            top: 490px
+        }
+
+        #car4 {
+            background: url(images/car4.png) no-repeat;
+            width: 157px;
+            height: 60px;
+            top: 550px
+        }
+    </style>
 </head>
 
 <body class="js">
@@ -22,12 +126,143 @@
     <main>
         <header>
             <h1>28 - Challenge</h1>
-            <h2>Crea desafíos interactivos basados en tiempo</h2>
 
         </header>
-        <section>
+        <section id="inicio" class="inicio">
+            <button id="btn-play">Play</button>
+        </section>
 
+        <section id="juego" class="juego hidden">
+            <div class="frog"></div>
+            <div id="car1" class="car"></div>
+            <div id="car2" class="car"></div>
+            <div id="car3" class="car"></div>
+            <div id="car4" class="car"></div>
         </section>
     </main>
+    <script>
+        let juego = false;
+
+        const frog = document.querySelector('.frog')
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnPlay = document.getElementById('btn-play');
+            const inicioSection = document.getElementById('inicio');
+            const juegoSection = document.getElementById('juego');
+
+            btnPlay.addEventListener('click', () => {
+                inicioSection.classList.add('hidden');
+                juegoSection.classList.remove('hidden');
+                juego = true;
+                // Inicia el movimiento de car1
+                const car1Interval = setInterval(moveCar1, 50);
+                const car2Interval = setInterval(moveCar2, 50);
+                const car3Interval = setInterval(moveCar3, 50);
+                const car4Interval = setInterval(moveCar4, 50);
+            });
+        });
+
+        let car1PositionX = 10;
+        const car1Speed = 5; // Puedes ajustar la velocidad aquí
+        function moveCar1() {
+            // Mueve car1 a la izquierda
+            car1PositionX += car1Speed;
+            car1.style.left = `${car1PositionX}px`;
+
+            // Si car1 sale de la pantalla por la izquierda, lo reposiciona a la derecha
+            if (car1PositionX > 330) {
+                car1PositionX = 10; // Posición inicial fuera de la pantalla
+                car1.style.left = `${car1PositionX}px`;
+            }
+        }
+
+
+        let car2PositionX = 10;
+        const car2Speed = 3; // Puedes ajustar la velocidad aquí
+        function moveCar2() {
+            // Mueve car1 a la izquierda
+            car2PositionX += car2Speed;
+            car2.style.left = `${car2PositionX}px`;
+
+            // Si car1 sale de la pantalla por la izquierda, lo reposiciona a la derecha
+            if (car2PositionX > 240) {
+                car2PositionX = 10; // Posición inicial fuera de la pantalla
+                car2.style.left = `${car2PositionX}px`;
+            }
+        }
+
+        let car3PositionX = 10;
+        const car3Speed = 7; // Puedes ajustar la velocidad aquí
+        function moveCar3() {
+            // Mueve car1 a la izquierda
+            car3PositionX += car3Speed;
+            car3.style.left = `${car3PositionX}px`;
+
+            // Si car1 sale de la pantalla por la izquierda, lo reposiciona a la derecha
+            if (car3PositionX > 300) {
+                car3PositionX = 10; // Posición inicial fuera de la pantalla
+                car3.style.left = `${car3PositionX}px`;
+            }
+        }
+
+        let car4PositionX = 10;
+        const car4Speed = 7; // Puedes ajustar la velocidad aquí
+        function moveCar4() {
+            // Mueve car1 a la izquierda
+            car4PositionX += car4Speed;
+            car4.style.left = `${car4PositionX}px`;
+
+            // Si car1 sale de la pantalla por la izquierda, lo reposiciona a la derecha
+            if (car4PositionX > 280) {
+                car4PositionX = 10; // Posición inicial fuera de la pantalla
+                car4.style.left = `${car4PositionX}px`;
+            }
+        }
+
+        let posX = 200
+        let posY = 600
+        window.addEventListener('keydown', event => {
+            if (juego) {
+                if (event.code == 'ArrowLeft') {
+                    if (posX > 40) {
+                        posX -= 40
+                        frog.style.left = `${posX}px`
+                    } else {
+                        posX = 360
+                        frog.style.display = 'none'
+                        setTimeout(() => {
+                            frog.style.display = 'block'
+                        }, 200)
+                        frog.style.left = `${posX}px`
+                    }
+                }
+                if (event.code == 'ArrowRight') {
+                    if (posX < 360) {
+                        posX += 40
+                        frog.style.left = `${posX}px`
+                    } else {
+                        posX = 40
+                        frog.style.display = 'none'
+                        setTimeout(() => {
+                            frog.style.display = 'block'
+                        }, 200)
+                        frog.style.left = `${posX}px`
+                    }
+                }
+                if (event.code == 'ArrowUp') {
+                    if (posY > 0) {
+                        posY -= 30
+                        frog.style.top = `${posY}px`
+                    }
+                }
+                if (event.code == 'ArrowDown') {
+                    if (posY < 600) {
+                        posY += 30
+                        frog.style.top = `${posY}px`
+                    }
+                }
+            }
+        })
+    </script>
 </body>
+
 </html>
