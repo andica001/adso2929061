@@ -1,0 +1,39 @@
+<style>
+    section {
+        textarea.text-area {
+            border-radius: 0.4rem;
+            width: 100%;
+            resize: none;
+            min-height: 120px;
+        }
+        div.actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.4rem;
+            button {
+                border: none;
+                border-radius: 0.4rem;
+                background-color: #fff9;
+                cursor: pointer;
+                padding: 0.8rem;
+                transition: transform 0.4s ease-in;
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+</style>
+<section class="section">
+    <textarea class="text-area" rows="10"></textarea>
+    <div class="actions">
+        <button class="set-html">Set HTML</button>
+        <button class="get-html">Get HTML</button>
+        <button class="set-text">Set Text</button>
+        <button class="get-text">Get Text</button>
+        <button class="set-attr">Set Attribute</button>
+        <button class="get-attr">Get Attribute</button>
+        <button class="set-value">Set Value</button>
+        <button class="get-value">Get Value</button>
+    </div>
+</section>

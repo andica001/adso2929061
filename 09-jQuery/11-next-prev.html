@@ -1,0 +1,103 @@
+<style>
+    div.controls {
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+        gap: 0.4rem;
+        align-items: center;
+        button {
+            border: none;
+            border-radius: 0.2rem;
+            background-color: #ca983b;
+            cursor: pointer;
+            padding: 0.4rem 0.8rem;
+            transition: transform 0.2s ease-in;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+    div.cards {
+        display: flex;
+        align-items: center;
+        margin-bottom: 4rem;
+        gap: 0.8rem;
+        div.carousel {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            width: 300px;
+            figure {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                margin: 0;
+                padding: 0;
+                filter: grayscale(1);
+                transition: all 0.5s ease-in;
+            }
+            figure figcaption {
+                opacity: 0;
+            }
+            figure.active {
+                filter: grayscale(0);
+                transform: scale(1.2);
+            }
+            figure.active figcaption {
+                opacity: 1;
+            }
+        }
+        button {
+            border: none;
+            border-radius: 0.2rem;
+            background-color: transparent;
+            cursor: pointer;
+            padding: 0.4rem 0.8rem;
+            transition: transform 0.2s ease-in;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+</style>
+<section>
+    <div class="controls">
+        <button class="btnFirst">First</button>
+        <button class="btnAutoPlay">Auto Play</button>
+        <button class="btnLast">Last</button>
+    </div>
+    <div class="cards">
+        <button class="btnPrev">
+            <img src="images/nextprev/prev.png">
+        </button>
+        <div class="carousel">
+            <figure class="active">
+                <img src="images/nextprev/card01.png">
+                <figcaption>Goku</figcaption>
+            </figure>
+            <figure>
+                <img src="images/nextprev/card02.png">
+                <figcaption>Krillin</figcaption>
+            </figure>
+            <figure>
+                <img src="images/nextprev/card03.png">
+                <figcaption>Piccolo</figcaption>
+            </figure>
+            <figure>
+                <img src="images/nextprev/card04.png">
+                <figcaption>Trunks</figcaption>
+            </figure>
+            <figure>
+                <img src="images/nextprev/card05.png">
+                <figcaption>Tenshin</figcaption>
+            </figure>
+        </div>
+        <button class="btn btnNext">
+            <img src="images/nextprev/next.png">
+        </button>
+    </div>
+</section>
