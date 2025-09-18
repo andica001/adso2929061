@@ -29,13 +29,13 @@
         .juego {
             position: relative;
             background: url(images/Fondo_rana_juego.png) no-repeat center;
-            width: 380px;
+            width: 350px !important;
             height: 700px;
             border-radius: 40px !important;
-            padding: 20px;
             margin-top: 20px;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
         }
 
 
@@ -69,12 +69,12 @@
             position: absolute;
             background: url(images/rana1.png) no-repeat;
             background-position-x: 0;
-            background-position-y: ;
+            background-position-y: 0;
             border-radius: 0.4rem;
             height: 32px;
             margin: 2rem auto;
             width: 44px;
-            top: 600px;
+            top: 580px;
             left: 200px;
         }
 
@@ -85,15 +85,15 @@
 
         #car1 {
             background: url(images/car1.png) no-repeat;
-            width: 85px;
-            height: 44px;
+            width: 115px;
+            height: 59px;
             top: 370px
         }
 
         #car2 {
             background: url(images/car2.png) no-repeat;
             width: 245px;
-            height: 44px;
+            height: 59px;
             top: 430px
         }
 
@@ -109,6 +109,39 @@
             width: 157px;
             height: 60px;
             top: 550px
+        }
+
+        .tronco {
+            position: absolute;
+            left: 10px;
+        }
+
+        #tronco1 {
+            background: url(images/tronco1.png) no-repeat;
+            width: 300px;
+            height: 60px;
+            top: 60px
+        }
+
+        #tronco2 {
+            background: url(images/tronco2.png) no-repeat;
+            width: 162px;
+            height: 55px;
+            top: 120px
+        }
+
+        #tronco3 {
+            background: url(images/tronco3.png) no-repeat;
+            width: 231px;
+            height: 53px;
+            top: 180px
+        }
+
+        #tronco4 {
+            background: url(images/tronco4.png) no-repeat;
+            width: 162px;
+            height: 55px;
+            top: 240px
         }
     </style>
 </head>
@@ -133,11 +166,15 @@
         </section>
 
         <section id="juego" class="juego hidden">
-            <div class="frog"></div>
+            <div id="tronco1" class="tronco"></div>
+            <div id="tronco2" class="tronco"></div>
+            <div id="tronco3" class="tronco"></div>
+            <div id="tronco4" class="tronco"></div>
             <div id="car1" class="car"></div>
             <div id="car2" class="car"></div>
             <div id="car3" class="car"></div>
             <div id="car4" class="car"></div>
+            <div class="frog"></div>
         </section>
     </main>
     <script>
@@ -155,9 +192,26 @@
                 juego = true;
                 // Inicia el movimiento de car1
                 const car1Interval = setInterval(moveCar1, 50);
+                intervals.push(car1Interval);
                 const car2Interval = setInterval(moveCar2, 50);
+                intervals.push(car2Interval);
                 const car3Interval = setInterval(moveCar3, 50);
+                intervals.push(car3Interval);
                 const car4Interval = setInterval(moveCar4, 50);
+                intervals.push(car4Interval);
+
+
+                const tronco1Interval = setInterval(moveTronco1, 50);
+                intervals.push(tronco1Interval);
+                const tronco2Interval = setInterval(moveTronco2, 50);
+                intervals.push(tronco2Interval);
+                const tronco3Interval = setInterval(moveTronco3, 50);
+                intervals.push(tronco3Interval);
+                const tronco4Interval = setInterval(moveTronco4, 50);
+                intervals.push(tronco4Interval);
+
+                const collisionInterval = setInterval(checkCollisions, 50);
+                intervals.push(collisionInterval);
             });
         });
 
@@ -169,8 +223,8 @@
             car1.style.left = `${car1PositionX}px`;
 
             // Si car1 sale de la pantalla por la izquierda, lo reposiciona a la derecha
-            if (car1PositionX > 330) {
-                car1PositionX = 10; // Posición inicial fuera de la pantalla
+            if (car1PositionX > 400) {
+                car1PositionX = -120; // Posición inicial fuera de la pantalla
                 car1.style.left = `${car1PositionX}px`;
             }
         }
@@ -184,8 +238,8 @@
             car2.style.left = `${car2PositionX}px`;
 
             // Si car1 sale de la pantalla por la izquierda, lo reposiciona a la derecha
-            if (car2PositionX > 240) {
-                car2PositionX = 10; // Posición inicial fuera de la pantalla
+            if (car2PositionX > 400) {
+                car2PositionX = -120; // Posición inicial fuera de la pantalla
                 car2.style.left = `${car2PositionX}px`;
             }
         }
@@ -198,8 +252,8 @@
             car3.style.left = `${car3PositionX}px`;
 
             // Si car1 sale de la pantalla por la izquierda, lo reposiciona a la derecha
-            if (car3PositionX > 300) {
-                car3PositionX = 10; // Posición inicial fuera de la pantalla
+            if (car3PositionX > 400) {
+                car3PositionX = -120; // Posición inicial fuera de la pantalla
                 car3.style.left = `${car3PositionX}px`;
             }
         }
@@ -212,22 +266,80 @@
             car4.style.left = `${car4PositionX}px`;
 
             // Si car1 sale de la pantalla por la izquierda, lo reposiciona a la derecha
-            if (car4PositionX > 280) {
-                car4PositionX = 10; // Posición inicial fuera de la pantalla
+            if (car4PositionX > 400) {
+                car4PositionX = -120; // Posición inicial fuera de la pantalla
                 car4.style.left = `${car4PositionX}px`;
             }
         }
 
+
+        let tronco1PositionX = 10;
+        const tronco1Speed = 12; // Puedes ajustar la velocidad aquí
+        function moveTronco1() {
+            // Mueve tronco1 a la izquierda
+            tronco1PositionX += tronco1Speed;
+            tronco1.style.left = `${tronco1PositionX}px`;
+
+            // Si tronco1 sale de la pantalla por la izquierda, lo reposiciona a la derecha
+            if (tronco1PositionX > 400) {
+                tronco1PositionX = -220; // Posición inicial fuera de la pantalla
+                tronco1.style.left = `${tronco1PositionX}px`;
+            }
+        }
+
+
+        let tronco2PositionX = 10;
+        const tronco2Speed = 6; // Puedes ajustar la velocidad aquí
+        function moveTronco2() {
+            // Mueve tronco1 a la izquierda
+            tronco2PositionX += tronco2Speed;
+            tronco2.style.left = `${tronco2PositionX}px`;
+
+            // Si tronco1 sale de la pantalla por la izquierda, lo reposiciona a la derecha
+            if (tronco2PositionX > 400) {
+                tronco2PositionX = -220; // Posición inicial fuera de la pantalla
+                tronco2.style.left = `${tronco2PositionX}px`;
+            }
+        }
+
+        let tronco3PositionX = -60;
+        const tronco3Speed = 14; // Puedes ajustar la velocidad aquí
+        function moveTronco3() {
+            // Mueve tronco1 a la izquierda
+            tronco3PositionX += tronco3Speed;
+            tronco3.style.left = `${tronco3PositionX}px`;
+
+            // Si tronco1 sale de la pantalla por la izquierda, lo reposiciona a la derecha
+            if (tronco3PositionX > 400) {
+                tronco3PositionX = -220; // Posición inicial fuera de la pantalla
+                tronco3.style.left = `${tronco3PositionX}px`;
+            }
+        }
+
+        let tronco4PositionX = 20;
+        const tronco4Speed = 5; // Puedes ajustar la velocidad aquí
+        function moveTronco4() {
+            // Mueve tronco1 a la izquierda
+            tronco4PositionX += tronco4Speed;
+            tronco4.style.left = `${tronco4PositionX}px`;
+
+            // Si tronco1 sale de la pantalla por la izquierda, lo reposiciona a la derecha
+            if (tronco4PositionX > 400) {
+                tronco4PositionX = -220; // Posición inicial fuera de la pantalla
+                tronco4.style.left = `${tronco4PositionX}px`;
+            }
+        }
+
         let posX = 200
-        let posY = 600
+        let posY = 580
         window.addEventListener('keydown', event => {
             if (juego) {
                 if (event.code == 'ArrowLeft') {
-                    if (posX > 40) {
-                        posX -= 40
+                    if (posX > 0) {
+                        posX -= 30
                         frog.style.left = `${posX}px`
                     } else {
-                        posX = 360
+                        posX = 320
                         frog.style.display = 'none'
                         setTimeout(() => {
                             frog.style.display = 'block'
@@ -236,11 +348,11 @@
                     }
                 }
                 if (event.code == 'ArrowRight') {
-                    if (posX < 360) {
-                        posX += 40
+                    if (posX < 320) {
+                        posX += 30
                         frog.style.left = `${posX}px`
                     } else {
-                        posX = 40
+                        posX = 0
                         frog.style.display = 'none'
                         setTimeout(() => {
                             frog.style.display = 'block'
@@ -250,18 +362,134 @@
                 }
                 if (event.code == 'ArrowUp') {
                     if (posY > 0) {
-                        posY -= 30
+                        posY -= 60
                         frog.style.top = `${posY}px`
                     }
                 }
                 if (event.code == 'ArrowDown') {
-                    if (posY < 600) {
-                        posY += 30
+                    if (posY < 550) {
+                        posY += 60
                         frog.style.top = `${posY}px`
                     }
                 }
             }
         })
+
+        // Agrega esta función al final de tu <script>
+        function checkCollisions() {
+            const frogRect = frog.getBoundingClientRect();
+            let onLog = false;
+
+            // 1. Detección de colisión con los troncos
+            const logs = document.querySelectorAll('.tronco');
+            logs.forEach(log => {
+                const logRect = log.getBoundingClientRect();
+
+                // Si la rana está sobre un tronco
+                if (
+                    frogRect.left < logRect.right &&
+                    frogRect.right > logRect.left &&
+                    frogRect.top < logRect.bottom &&
+                    frogRect.bottom > logRect.top
+                ) {
+                    // La rana se mueve junto con el tronco
+                    const logId = log.id;
+                    const logSpeed = getLogSpeed(logId);
+                    posX += logSpeed;
+                    frog.style.left = `${posX}px`;
+                    onLog = true;
+                }
+            });
+
+            // Validar si la rana está en la zona del río (Y entre 60 y 250)
+            // Si NO está sobre un tronco, se ahoga
+            if (posY >= 60 && posY <= 250 && !onLog) {
+                endGame("¡La rana se ha ahogado!");
+            }
+
+
+            // 2. Detección de colisión con los coches
+            const cars = document.querySelectorAll('.car');
+            cars.forEach(car => {
+                const carRect = car.getBoundingClientRect();
+                if (
+                    frogRect.left < carRect.right &&
+                    frogRect.right > carRect.left &&
+                    frogRect.top < carRect.bottom &&
+                    frogRect.bottom > carRect.top
+                ) {
+                    // Colisión con un coche, el juego termina
+                    endGame("¡La rana ha sido atropellada!");
+                }
+            });
+
+            // 3. Detección de la meta (Ganar)
+            if (posY < 60) {
+                winGame("¡Felicidades, llegaste a la meta!");
+            }
+        }
+
+        function endGame(message) {
+            if (!juego) return; // Evita que se llame múltiples veces
+
+            juego = false;
+            alert(message);
+
+            // Detener todos los intervalos para que los elementos dejen de moverse
+            clearIntervals();
+
+            // Restablecer la posición de la rana
+            posX = 200;
+            posY = 580;
+            frog.style.left = `${posX}px`;
+            frog.style.top = `${posY}px`;
+
+            // Ocultar la sección de juego y mostrar la de inicio
+            const inicioSection = document.getElementById('inicio');
+            const juegoSection = document.getElementById('juego');
+            juegoSection.classList.add('hidden');
+            inicioSection.classList.remove('hidden');
+        }
+
+        // Para limpiar todos los intervalos de manera más eficiente, se pueden almacenar en un array
+        let intervals = [];
+        function clearIntervals() {
+            intervals.forEach(interval => clearInterval(interval));
+            intervals = [];
+        }
+
+        function winGame(message) {
+            if (!juego) return; // Evita que se llame múltiples veces
+
+            juego = false;
+            alert(message);
+
+            // Detener todos los intervalos para que los elementos dejen de moverse
+            clearIntervals();
+
+            // Restablecer la posición de la rana
+            posX = 200;
+            posY = 580;
+            frog.style.left = `${posX}px`;
+            frog.style.top = `${posY}px`;
+
+            // Ocultar la sección de juego y mostrar la de inicio
+            const inicioSection = document.getElementById('inicio');
+            const juegoSection = document.getElementById('juego');
+            juegoSection.classList.add('hidden');
+            inicioSection.classList.remove('hidden');
+        }
+
+
+        function getLogSpeed(logId) {
+            switch (logId) {
+                case 'tronco1': return tronco1Speed;
+                case 'tronco2': return tronco2Speed;
+                case 'tronco3': return tronco3Speed;
+                case 'tronco4': return tronco4Speed;
+                default: return 0;
+            }
+        }
     </script>
 </body>
 
