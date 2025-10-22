@@ -4,29 +4,319 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>00 - Template</title>
+    <title>MEMODICA - Juego de Memoria</title>
     <link rel="stylesheet" href="../css/Styles.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
+    <style>
+        body.jquery {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        #game-container {
+            background-image: url('images/fondo-memory.png');
+            background-size: cover;
+            background-position: center;
+            width: 380px;
+            height: 740px;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            display: none;
+        }
+
+        #game-info {
+            position: relative;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 90px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 5px;
+            border-radius: 8px;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        #star-icon {
+            display: none;
+        }
+
+        .info-box {
+            flex: 1;
+            text-align: center;
+        }
+
+        #time,
+        #moves {
+            color: gold;
+        }
+
+        #card-board {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            perspective: 1000px;
+            background-color: #eee9;
+            padding: 2px;
+            border-radius: 10px;
+            border: 3px solid #000;
+        }
+
+        .card {
+            width: 99px;
+            height: 99px;
+            margin: 1px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+            box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5);
+            pointer-events: all;
+        }
+
+        .card.flip {
+            transform: rotateY(180deg);
+            pointer-events: none;
+        }
+
+        .card.match {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            border: 3px solid white;
+            box-sizing: border-box;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-back {
+            background-image: url('images/card-back.png');
+            background-color: #2c3e50;
+            transform: rotateY(0deg);
+        }
+
+        .card-front {
+            background-color: #ecf0f1;
+            transform: rotateY(180deg);
+        }
+
+        #message {
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: gold;
+            text-shadow: 1px 1px 3px #000;
+            margin-top: 15px;
+        }
+
+        #startButton {
+            padding: 12px 25px;
+            font-size: 1.3em;
+            font-weight: bold;
+            background-color: #8c8c8c;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 15px;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s;
+        }
+
+        #startButton:hover {
+            background-color: #a0a0a0;
+        }
+    </style>
+    </style>
 </head>
 
 <body class="jQuery">
     <nav>
         <a href="index.html">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path
+                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+            </svg>
         </a>
     </nav>
     <main>
-        <header>
-            <h1>00 - Template</h1>
-            <h2>Description</h2>
-
-        </header>
-        <section>
-
-        </section>
+        <div id="game-container">
+            <div id="game-info">
+                <div class="info-box">Tiempo: <span id="time">0</span> seg</div>
+                <div class="info-box">Movimientos: <span id="moves">0</span></div>
+            </div>
+            <div id="card-board">
+            </div>
+            <div id="message">¡Listo para empezar!</div>
+            <button id="startButton">Empezar</button>
+        </div>
     </main>
+    <script>
+        $(document).ready(function () {
+            const cardImages = ['mem-img1', 'mem-img2', 'mem-img3',
+                'mem-img4', 'mem-img5', 'mem-img6'];
+            let cards = [...cardImages, ...cardImages];
+            let flippedCards = [];
+            let lockBoard = false;
+            let moves = 0;
+            let seconds = 0;
+            let timerInterval = null;
+            function shuffle(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+            }
+            function startTimer() {
+                seconds = 0;
+                $('#time').text(seconds);
+                timerInterval = setInterval(() => {
+                    seconds++;
+                    $('#time').text(seconds);
+                }, 1000);
+            }
+
+            function stopTimer() {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+
+            function createBoard() {
+                shuffle(cards);
+                const $board = $('#card-board');
+                $board.empty();
+                cards.forEach((imageName) => {
+                    const $card = $('<div>').addClass('card').data('content', imageName);
+                    const $back = $('<div>').addClass('card-face card-back');
+                    const $front = $('<div>').addClass('card-face card-front').css({
+                        'background-image': `url('images/${imageName}.png')`
+                    });
+                    $card.append($back, $front);
+                    $board.append($card);
+                });
+            }
+
+            function updateMoves() {
+                moves++;
+                $('#moves').text(moves);
+            }
+
+            function flipCard() {
+                if (lockBoard) return;
+                const $currentCard = $(this);
+                if ($currentCard.hasClass('flip') || $currentCard.hasClass('match')) return;
+                $currentCard.addClass('flip');
+                flippedCards.push($currentCard);
+
+                if (flippedCards.length === 2) {
+                    lockBoard = true;
+                    updateMoves();
+                    checkForMatch();
+                }
+            }
+
+            function checkForMatch() {
+                const [card1, card2] = flippedCards;
+                const isMatch = card1.data('content') === card2.data('content');
+                if (isMatch) {
+                    disableCards(card1, card2);
+                } else {
+                    unflipCards(card1, card2);
+                }
+            }
+
+            function disableCards(card1, card2) {
+                card1.addClass('match').off('click');
+                card2.addClass('match').off('click');
+                resetBoard();
+                checkWin();
+            }
+
+            function unflipCards(card1, card2) {
+                setTimeout(() => {
+                    card1.removeClass('flip');
+                    card2.removeClass('flip');
+                    resetBoard();
+                }, 1000);
+            }
+
+            function resetBoard() {
+                [flippedCards, lockBoard] = [[], false];
+            }
+
+            function checkWin() {
+                if ($('.card:not(.match)').length === 0) {
+                    stopTimer();
+                    $('#message').text(`🎉 ¡Felicidades! ¡Juego Completado en ${moves} movimientos y ${seconds} segundos! 🎉`);
+                    $('.card').off('click');
+                    setTimeout(() => {
+                        $('#startButton').show();
+                        $('#message').text('¡Listo para empezar!');
+                    }, 3000);
+                }
+            }
+
+            function startGame() {
+                if (timerInterval) stopTimer();
+                $('#startButton').hide();
+                $('#moves').text('0');
+                moves = 0;
+                createBoard();
+                $('.card').addClass('flip');
+                let countdown = 3;
+                $('#time').text('0');
+                const countdownInterval = setInterval(() => {
+                    countdown--;
+                    $('#message').text(`Previsualizando parejas... ${countdown} segundos`);
+
+                    if (countdown === 0) {
+                        clearInterval(countdownInterval);
+                        $('#message').text('¡A JUGAR!');
+
+                        setTimeout(() => {
+                            $('.card').removeClass('flip');
+                            $('.card').on('click', flipCard);
+                            lockBoard = false;
+                            startTimer();
+                        }, 500);
+                    }
+                }, 1000);
+            }
+
+            $('#startButton').on('click', startGame);
+
+            createBoard();
+            $('.card').removeClass('flip').off('click');
+        });
+
+    </script>
 </body>
 
 </html>
