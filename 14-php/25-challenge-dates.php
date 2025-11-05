@@ -1,22 +1,23 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Calculadora de Edad</title>
-</head>
-<body>
-    <h1>🎂 ¡Calcula tu Edad! 🎂</h1>
+<?php 
+    $title       = '25- Challenge Dates';
+    $description = 'Calculate the age in years';
 
+    include 'template/header.php';
+
+    echo "<section>";
+
+
+    echo "<h1>🎂 ¡Calcula tu Edad! 🎂</h1>";
+
+    echo '
     <form method="POST" action="">
         <label for="fecha_nacimiento">Introduce tu Fecha de Nacimiento:</label>
         <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
         <br><br>
         <button type="submit" name="calcular">Calcular Edad</button>
-    </form>
+    </form>';
+    
 
-    <hr>
-
-<?php
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['fecha_nacimiento'])) {
     $fechaNacimiento = $_POST['fecha_nacimiento'];
     if (empty($fechaNacimiento)) {
@@ -35,6 +36,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['fecha_nacimiento'])) {
         }
     }
 }
+include 'template/footer.php';
 ?>
-</body>
-</html>
