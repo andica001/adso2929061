@@ -1,0 +1,53 @@
+-- Show Version MysQL
+> mysql --version
+
+-- Access to MySQL server
+> mysql -u root -p
+
+-- Show All DataBases
+>> show databases;
+
+--Create database
+>> create database databasename
+
+--Use Database
+>> use databasename
+
+--Connect Database
+>> connect databasename
+
+--create table
+>>create table gyms(
+    -> id int auto_increment,
+    -> name varchar(32) not null,
+    -> create_at timestamp,
+    -> primary key(id));
+
+>>create table trainers(
+    -> id int auto_increment,
+    -> name varchar(32) not null unique,
+    -> level int not null,
+    -> gym_id int not null,
+    -> created_at timestamp,
+    -> primary key(id),
+    -> foreign key(gym_id) references gyms(id));
+
+--descricion table 
+describe tablename
+
+--show tables 
+>> show tables
+
+--Exit mySQL
+>>exit
+
+--Dump database (Backup dataBase)
+>mysqldump -u root pokeadso> backup.sql
+
+-- Drop database
+drop database databasename
+
+--Recovery DataBase
+>>create database pokeadso
+>>exit
+>mysql -u root pokeadso < backup.sql
