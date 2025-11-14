@@ -1,53 +1,130 @@
--- Show Version MysQL
-> mysql --version
+<!DOCTYPE html>
+<html lang="en">
 
--- Access to MySQL server
-> mysql -u root -p
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 - Basic </title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        main section {
+            color: #fff;
+        }
 
--- Show All DataBases
->> show databases;
+        section {
+            textarea {
+                background-color: #15316b;
+                border: none;
+                border-radius: 0.4rem;
+                outline: none;
+                padding: 0.4rem;
+                color: #fff;
+                width: 100%;
+                min-height: 32px;
+                font-size: 0.8rem;
+                resize: none;
+                field-sizing: content;
+            }
+        }
+    </style>
+</head>
 
---Create database
->> create database databasename
+<body class="sql">
+    <nav>
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path fill="#ffffff"
+                    d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
+            </svg>
+        </a>
 
---Use Database
->> use databasename
+    </nav>
+    <main>
+        <header>
+            <h1>01 - Basic </h1>
+            <h2>Comandos basicos</h2>
 
---Connect Database
->> connect databasename
+        </header>
+        <section>
+            <h3>SHOW VERSION MYSQL:</h3>
+            <textarea>mysql --version</textarea>
+            <h3>ACCES TO MYSQL SERVER:</h3>
+            <textarea>mysql -u root -p</textarea>
+            <h3>SHOW ALL DATABASES:</h3>
+            <textarea>SHOW DATABASES;</textarea>
+            <h3>CREAR UNA BASE DE DATOS:</h3>
+            <textarea>CREATE DATABASE pokeadso;</textarea>
+            <h3>USAR UNA BASE DE DATOS:</h3>
+            <textarea>USE pokeadso;</textarea>
+            <h3>CONECTAR A UNA BASE DE DATOS:</h3>
+            <textarea>connect pokeadso;</textarea>
+            <h3>CREAR UNA TABLA:</h3>
+            <textarea>create table gyms(
+-> id int auto_increment,
+-> name varchar(32) not null,
+-> create_at timestamp,
+-> primary key(id));
+</textarea>
+            <h3>DESCRIBE TABLA:</h3>
+            <textarea>> DESCRIBE gyms;</textarea>
+            <h3>CREAR TRAINERS:</h3>
+            <textarea>create table trainers(
+-> id int auto_increment,
+-> name varchar(32) not null unique,
+-> level int not null,
+-> gym_id int not null,
+-> created_at timestamp,
+-> primary key(id),
+-> foreign key(gym_id) references gyms(id));</textarea>
 
---create table
->>create table gyms(
-    -> id int auto_increment,
-    -> name varchar(32) not null,
-    -> create_at timestamp,
-    -> primary key(id));
+            <h3>EXIT MYSQL:</h3>
+            <textarea>exit</textarea>
 
->>create table trainers(
-    -> id int auto_increment,
-    -> name varchar(32) not null unique,
-    -> level int not null,
-    -> gym_id int not null,
-    -> created_at timestamp,
-    -> primary key(id),
-    -> foreign key(gym_id) references gyms(id));
+            <h3>DUMP DATA (BACKUP DATABASE):</h3>
+            <textarea>mysqldump -u root pokeadso > backup.sql</textarea>
 
---descricion table 
-describe tablename
+            <h3>DROP DATABASE:</h3>
+            <textarea>DROP DATABASE pokeadso;</textarea>
 
---show tables 
->> show tables
+            <h3>RECOVERY DATABASE:</h3>
+            <textarea>create database pokeadso;
+exit
+mysql -u root pokeadso < backup.sql </textarea>
+            <h3>SHOW CONSTRAINT FK:</h3>
+            <textarea>SHOW CREATE TABLE pokemons;</textarea>
 
---Exit mySQL
->>exit
+            <h3>ALTER TABLE DROP FK:</h3>
+            <textarea>ALTER TABLE pokemons
+DROP FOREIGN KEYpokemons_ibfk_1;
+            </textarea>
 
---Dump database (Backup dataBase)
->mysqldump -u root pokeadso> backup.sql
+            <h3>ALTER TABLE ADD FK:</h3>
+            <textarea>ALTER TABLE pokemons
+ADD FOREIGN KEY(trainer_id) REFERENCES trainers(id);
+            </textarea>
 
--- Drop database
-drop database databasename
+            <h3>ALTER TABLE RENAME:</h3>
+            <textarea>ALTER TABLE pokemons RENAME TO DiGIMONS;</textarea>
 
---Recovery DataBase
->>create database pokeadso
->>exit
->mysql -u root pokeadso < backup.sql
+            <h3>ALTER TABLE CHANGE COLUMN:</h3>
+            <textarea>ALTER TABLE pokemons CHANGE stamina aguante INT NOT NULL;</textarea>
+
+            <h3>ALTER TABLE ADD COLUMN:</h3>
+            <textarea>ALTER TABLE ADD pokemons COLUMN color VARCHAR(16); </textarea>
+
+            <h3>ALTER TABLE DROP COLUMN:</h3>
+            <textarea>ALTER TABLE pokemons DROP COLUMN color;</textarea>
+
+            <h3>DROP TABLE:</h3>
+            <textarea>DROP TABLE pokemons;</textarea>
+
+            <h3>ALTER TABLE ADD COLUM AFTER-BEFOR COLUM:</h3>
+            <textarea>ALTER TABLE pokemons ADD COLUMN health INT NOT NULL AFTER speed;</textarea>
+
+
+        </section>
+    </main>
+</body>
+
+</html>
