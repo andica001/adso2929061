@@ -263,8 +263,8 @@ body.oop {
     background-attachment: fixed;
     background-size: cover;
 
-    main.main-php {
-        header.header-php {
+    main {
+        header {
             h1 {
                 color: #fff;
             }
@@ -285,6 +285,8 @@ body.oop {
                 font-size: 1rem;
                 align-items: center;
             }
+
+
         }
 
         menu {
@@ -301,5 +303,31 @@ body.oop {
                 color: blue;
             }
         }
+
+        table {
+            border: 1px solid #0006;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+            width: 100%;
+
+            thead {
+                th {
+                    border: 1px solid #0006;
+                    background-color: #0006;
+                    color: #fff;
+                    padding: 0.4rem;
+                }
+            }
+
+            tbody {
+                td {
+                    border: 2px solid #0006;
+                    background-color: #fff6;
+                    text-align: center;
+                    padding: 0.8rem 0.4rem;
+                }
+            }
+        }
+
     }
 }
