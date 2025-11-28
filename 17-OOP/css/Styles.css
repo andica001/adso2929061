@@ -322,7 +322,8 @@ body.oop {
             tbody {
                 td {
                     border: 2px solid #0006;
-                    background-color: #fff6;
+                    background-color: #fff;
+                    color: #000;
                     text-align: center;
                     padding: 0.8rem 0.4rem;
                 }
