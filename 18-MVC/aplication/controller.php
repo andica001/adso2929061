@@ -20,7 +20,14 @@ class Controller
         $segments = explode('/', $path);
         switch ($segments[0]) {
             case 'show':
-                echo 'Ingrese al switch';
+                $pokemon = $this->model->showPokemon($segments[1]);
+                $this->load->view('viewPokemon.php', $pokemon);
+                break;
+            case 'edit':
+                $pokemon = $this->model->viewPokemon($segments[1]);
+                $this->load->view('viewPokemon.php', $pokemon);
+                break;
+            case 'delete':
                 $pokemon = $this->model->viewPokemon($segments[1]);
                 $this->load->view('viewPokemon.php', $pokemon);
                 break;

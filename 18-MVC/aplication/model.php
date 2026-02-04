@@ -22,4 +22,13 @@ class Model extends Database
         }
         return false;
     }
+
+    public function showPokemon($id)
+    {
+        $stmt = $this->db->prepare("SELECT p.*, t.name as tname FROM pokemons p, trainers t WHERE p.id = ? and p.trainer_id=t.id");
+        if ($stmt->execute([$id])) {
+            return $stmt->fetch();
+        }
+        return false;
+    }
 }
