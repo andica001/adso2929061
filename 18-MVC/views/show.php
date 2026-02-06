@@ -15,7 +15,7 @@
 
     <h2 class="my-10 text-center text-xl font-bold border-b-1 pb-2"><?= htmlspecialchars($data['name']) ?></h2>
 
-    <div class="text-center overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+    <div class="w-[70%] text-center overflow-x-auto rounded-box border border-base-content/5 bg-base-100 flex justify-center ml-50">
         <table class="table table-zebra bg-white text-black">
             <thead class="bg-black text-white">
                 <th class="w-1/4 border text-center">Property</th>
@@ -27,7 +27,7 @@
                         <label for="type" class="text-center text-xl text-black">Type: </label>
                     </td>
                     <td class="border">
-                        <input type="text" class="text-center text-xl text-black" value="<?= htmlspecialchars($data['type']) ?>" readonly="false">
+                        <input type="text" class="text-center text-xl text-black" value="<?= htmlspecialchars($data['type']) ?>" readonly>
                     </td>
                 </tr>
                 <tr>
@@ -35,7 +35,7 @@
                         <label for="strenght" class="text-center text-xl text-black">Strenght: </label>
                     </td>
                     <td class="border">
-                        <input type="text" class="text-center text-xl text-black" value="<?= htmlspecialchars($data['strenght']) ?>" readonly="false">
+                        <input type="text" class="text-center text-xl text-black" value="<?= htmlspecialchars($data['strenght']) ?>" readonly>
                     </td>
                 </tr>
                 <tr>
@@ -43,7 +43,7 @@
                         <label for="stamina" class="text-center text-xl text-black">Stamina: </label>
                     </td>
                     <td class="border">
-                        <input type="text" class="text-center text-xl text-black" value="<?= htmlspecialchars($data['stamina']) ?>" readonly="false">
+                        <input type="text" class="text-center text-xl text-black" value="<?= htmlspecialchars($data['stamina']) ?>" readonly>
                     </td>
                 </tr>
                 <tr>
@@ -51,7 +51,7 @@
                         <label for="speed" class="text-center text-xl text-black">Speed: </label>
                     </td>
                     <td class="border">
-                        <input type="text" class="text-center text-xl text-black" value="<?= htmlspecialchars($data['speed']) ?>" readonly="false">
+                        <input type="text" class="text-center text-xl text-black" value="<?= htmlspecialchars($data['speed']) ?>" readonly>
                     </td>
                 </tr>
                 <tr>
@@ -59,7 +59,7 @@
                         <label for="accuracy" class="text-center text-xl text-black">Accuracy: </label>
                     </td>
                     <td class="border">
-                        <input type="text" class="text-center text-xl text-black" value="<?= htmlspecialchars($data['accuracy']) ?>" readonly="false">
+                        <input type="text" class="text-center text-xl text-black" value="<?= htmlspecialchars($data['accuracy']) ?>" readonly>
                     </td>
                 </tr>
                 <tr>
@@ -67,7 +67,7 @@
                         <label for="tname" class="text-center text-xl text-black">Trainer: </label>
                     </td>
                     <td class="border">
-                        <input type="text" class="text-center text-xl text-black" value="<?= htmlspecialchars($data['tname']) ?>">
+                        <input type="text" class="text-center text-xl text-black" value="<?= htmlspecialchars($data['tname']) ?>" readonly>
                     </td>
                 </tr>
             </tbody>

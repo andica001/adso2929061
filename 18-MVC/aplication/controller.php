@@ -21,11 +21,28 @@ class Controller
         switch ($segments[0]) {
             case 'show':
                 $pokemon = $this->model->showPokemon($segments[1]);
-                $this->load->view('viewPokemon.php', $pokemon);
+                $this->load->view('show.php', $pokemon);
                 break;
             case 'edit':
                 $pokemon = $this->model->viewPokemon($segments[1]);
-                $this->load->view('viewPokemon.php', $pokemon);
+                $trainers = $this->model->listTrainers();
+                $data=[
+                    'pokemon'=> $pokemon,
+                    'trainers'=> $trainers
+                ];
+                $this->load->view('edit.php', $data);
+                break;
+            case 'update':
+                $id=$_POST['id'];
+                $name= $_POST['name'];
+                $type= $_POST['type'];
+                $strenght= $_POST['strenght'];
+                $stamina= $_POST['stamina'];
+                $speed= $_POST['speed'];
+                $accuracy= $_POST['accuracy'];
+                $trainer_id= $_POST['trainer_id'];
+                $this->model->editPokemon($id,$name, $type, $strenght, $stamina, $speed, $accuracy, $trainer_id);
+                header('location: /');
                 break;
             case 'delete':
                 $pokemon = $this->model->viewPokemon($segments[1]);

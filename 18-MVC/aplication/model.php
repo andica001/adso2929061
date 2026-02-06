@@ -31,4 +31,18 @@ class Model extends Database
         }
         return false;
     }
+
+    public function listTrainers(){
+        $stmt =  $this->db->query("SELECT * FROM trainers");
+        return $stmt->fetchAll();
+    }
+
+    public function editPokemon($id, $name, $type, $strenght, $stamina, $speed, $accuracy, $trainer_id)
+    {
+        $stmt = $this->db->prepare("UPDATE pokemons SET name=?, type=?, strenght=?, stamina=?, speed=?, accuracy=?, trainer_id=?  WHERE id = ?");
+        return $stmt->execute([$name, $type, $strenght, $stamina, $speed, $accuracy, $trainer_id, $id]);
+
+    }
+
+
 }
