@@ -45,6 +45,7 @@ class Controller
                 header('location: /');
                 break;
             case 'delete':
+                echo 'Elimine el pokemon';
                 $pokemon = $this->model->viewPokemon($segments[1]);
                 $this->load->view('viewPokemon.php', $pokemon);
                 break;

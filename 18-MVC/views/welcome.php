@@ -55,11 +55,15 @@
             </tbody>
         </table>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.querySelectorAll('.btn-del').forEach(button => {
             button.addEventListener('click', function() {
+                const pokemonId = this.getAttribute('data-id');
+                const pokemonName = this.getAttribute('data-name');
+
                 Swal.fire({
-                    title: '¿Estás seguro?',
+                    title: `¿Estás seguro de borrar a ${pokemonName}?`,
                     text: "¡No podrás revertir esta acción!",
                     icon: 'warning',
                     showCancelButton: true,
@@ -69,6 +73,7 @@
                     cancelButtonText: 'Cancelar'
                 }).then((result) => {
                     if (result.isConfirmed) {
+                        // Ahora pokemonId ya tiene el valor correcto
                         window.location.href = "delete/" + pokemonId;
                     }
                 });
