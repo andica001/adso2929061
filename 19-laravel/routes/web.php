@@ -22,10 +22,15 @@ Route::get('show/pet/{id}',function(){
     dd($pet->toArray());
 });
 
+Route::get('view/allpets',function(){
+    $pets = App\Models\Pet::all() ;
+    return view('listpets')->with('pets',$pets);
+});
+
 Route::get('challenge',function(){
     $users = App\Models\User::take(20)->get();
     echo '<table style="border: 1px solid"> 
-            <tr style="border: 1px solid">
+            <tr style="border: 1px solid; background-color: black; color: white">
                 <td style="border: 1px solid">nombre</td>
                 <td style="border: 1px solid">Correo</td>
                 <td style="border: 1px solid">Telefono</td>
@@ -39,14 +44,14 @@ Route::get('challenge',function(){
         $mail=$user->email;
         $phone=$user->phone;
         $edad = Carbon::parse($user->birthdate)->age;
-        $created=Carbon::parse($user->createdat)->week;
-        $photo=public_path("images/{$user->photo}");
-        echo '<td style="border: 1px solid">'. $name .' </td>
-                <td style="border: 1px solid">'. $mail .'</td>
-                <td style="border: 1px solid">'. $phone .'</td>
-                <td style="border: 1px solid">'. $edad .' años </td>
-                <td style="border: 1px solid">' . $created . ' days </td>
-                <td style="border: 1px solid"><img style="width:100px, height:100px" src="' . $photo . '"></td>
+        $created=$user->created_at->diffForHumans();
+        $photo=asset("images/" . $user->photo);
+        echo '<td style="border: 1px solid; background-color: gray; color: white">'. $name .' </td>
+                <td style="border: 1px solid; background-color: gray; color: white">'. $mail .'</td>
+                <td style="border: 1px solid; background-color: gray; color: white">'. $phone .'</td>
+                <td style="border: 1px solid; background-color: gray; color: white">'. $edad .' años </td>
+                <td style="border: 1px solid; background-color: gray; color: white">' . $created . '</td>
+                <td style="border: 1px solid"><img width="50px" height="50px" src="' . $photo . '"></td>
             </tr>';
     }
     echo '</table>';
