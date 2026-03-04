@@ -10,8 +10,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="bg-[url(images/bg-welcome.png)] min-h-dvh bg-no-repeat bg-cover">
-    <main>
+<body class="bg-[linear-gradient(to_top,#000c,#0000),url('images/bg-welcome.png')] min-h-dvh bg-no-repeat bg-center bg-cover">
+    <main class="p-12 flex flex-col gap-2 justify-center items-center min-h-dvh">
         <h1>@yield('title')</h1>
         @yield('content')
     </main>
