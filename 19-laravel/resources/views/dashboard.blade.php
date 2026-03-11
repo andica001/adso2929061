@@ -2,6 +2,8 @@
 
 @section('title', 'Larapets: Dashboard')
 
+@include('partials.navbar')
+
 @section('content')
 
     <form method="POST" action="{{ route('logout') }}">

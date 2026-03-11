@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Larapets: Register')
+
+@include('partials.navbar')
+
 @section('content')
     <section class="bg-[#0009] outline w-80 md:w-fit flex flex-col justify-center text-white items-center p-4 rounded-sm">
         <h1 class="text-4xl flex gap-2 border-b-2 pb-2 mb-4">
