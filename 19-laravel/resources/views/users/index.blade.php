@@ -120,7 +120,8 @@
                                     </path>
                                 </svg>
                             </a>
-                            <a href="javascript:;" class="btn btn-outline btnxs btn-error">
+                            <a href="javascript:;" class="btn btn-outline btnxs btn-error btn-delete"
+                                data-fullname="{{ $user->fullname }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="currentColor"
                                     viewBox="0 0 256 256">
                                     <path
@@ -128,6 +129,10 @@
                                     </path>
                                 </svg>
                             </a>
+                            <form class="hidden" method="POST" action="{{ url('users/' . $user->id) }}">
+                                @csrf
+                                @method('delete')
+                            </form>
                         </td>
                     </tr>
                 @endforeach
@@ -142,4 +147,38 @@
             </tfoot>
         </table>
     </div>
+@endsection
+
+@section('js')
+    <script>
+        //Mensajes
+        @if(session('message'))
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "{{ session('message') }}",
+                showConfirmButton: false,
+                timer: 4500
+            });
+        @endif
+
+        //Delete 
+        $('.btn-delete').click(function () {
+
+            $fullname=$(this).attr('data-fullname')
+            Swal.fire({
+                title: "Are you sure?",
+                text: "The User: "+ $fullname +"  will be deleted!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed){
+                    $(this).next().submit()
+                }
+            });
+        })
+    </script>
 @endsection
