@@ -83,7 +83,7 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="datalist">
                 @foreach ($users as $user)
                     <tr class="text-white even:bg-blue-900">
                         <td class="hidden md:table-cell">{{ $user->id }}</td>
@@ -151,6 +151,15 @@
 
 @section('js')
     <script>
+
+        //import file
+        $('.btn-import').click(function (e) {
+            $('#file').click()
+        })
+
+        $('#file').change(function (e) {
+            $(this).parent().submit();
+        })
         //Mensajes
         @if(session('message'))
             Swal.fire({
@@ -164,21 +173,61 @@
 
         //Delete 
         $('.btn-delete').click(function () {
-
-            $fullname=$(this).attr('data-fullname')
+            $fullname = $(this).attr('data-fullname')
             Swal.fire({
                 title: "Are you sure?",
-                text: "The User: "+ $fullname +"  will be deleted!",
+                text: "The User: " + $fullname + "  will be deleted!",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Yes, delete it!"
             }).then((result) => {
-                if (result.isConfirmed){
+                if (result.isConfirmed) {
                     $(this).next().submit()
                 }
             });
+        })
+
+
+        // Search - - - - - - - - - - - - - - - -
+        function debounce(func, wait) {
+            let timeout
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout)
+                    func(...args)
+                };
+                clearTimeout(timeout)
+                timeout = setTimeout(later, wait)
+            }
+        }
+        const search = debounce(function (query) {
+
+            $token = $('input[name=_token]').val()
+
+            $.post("search/users", { 'q': query, '_token': $token },
+                function (data) {
+                    $('.datalist').html(data).hide().fadeIn(1000)
+                }
+            )
+        }, 500)
+        $('body').on('input', '#qsearch', function (event) {
+            event.preventDefault()
+            const query = $(this).val()
+
+            $('.datalist').html(`<tr>
+                                            <td colspan="7" class="text-center py-18">
+                                                <span class="loading loading-spinner loading-xl"></span>
+                                            </td>
+                                        </tr>`)
+            if (query != '') {
+                search(query)
+            } else {
+                setTimeout(() => {
+                    window.location.replace('users')
+                }, 500)
+            }
         })
     </script>
 @endsection
