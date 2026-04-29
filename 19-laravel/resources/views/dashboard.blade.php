@@ -335,3 +335,18 @@
 
     </div>
 @endsection
+@section('js')
+    <script>
+
+        //Mensajes
+        @if(session('error'))
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: "{{ session('error') }}",
+                showConfirmButton: false,
+                timer: 4500
+            });
+        @endif
+    </script>
+@endsection

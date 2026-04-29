@@ -80,22 +80,26 @@ Route::get('view/pet/{id}',function(){
 
 //Middleware Auth
 Route::middleware('auth')->group(function() {
-    Route::resources([
-        'users'=> UserController::class
-        //'pets', PetController::class
-        //'adoptions', AdoptionController::class
-    ]);
+    
+    Route::middleware(['Admin'])->group(function () {
+        Route::resources([
+            'users'=> UserController::class
+            //'pets', PetController::class
+            //'adoptions', AdoptionController::class        
+        ]);
+        Route::get('export/users/pdf',[UserController::class,'pdf']);
+        Route::get('export/users/excel',[UserController::class,'excel']);
 
-    //Exports
-    Route::get('export/users/pdf',[UserController::class,'pdf']);
-    Route::get('export/users/excel',[UserController::class,'excel']);
+        //Import Excel
+        Route::POST('import/users',[UserController::class,'import']);
 
-    //Import Excel
-    Route::POST('import/users',[UserController::class,'import']);
+        //search
+        Route::post('search/users',[UserController::class,'search']);
+    });
 
-    //search
-    Route::post('search/users',[UserController::class,'search']);
 });
+
+//Middleware Auth
 
 
 require __DIR__.'/auth.php';
