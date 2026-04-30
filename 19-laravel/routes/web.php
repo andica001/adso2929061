@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Carbon\Carbon;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdoptionController;
+use App\Http\Controllers\PetController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -83,12 +85,20 @@ Route::middleware('auth')->group(function() {
     
     Route::middleware(['Admin'])->group(function () {
         Route::resources([
-            'users'=> UserController::class
-            //'pets', PetController::class
-            //'adoptions', AdoptionController::class        
+            'users'=> UserController::class,
+            #'pets', PetController::class,
+            #'adoptions'=> AdoptionController::class
         ]);
+
+        Route::get('adoptions',[AdoptionController::class,'index']);
+        Route::get('adoptions/{id}',[AdoptionController::class,'show']);
+
         Route::get('export/users/pdf',[UserController::class,'pdf']);
+        Route::get('export/adoptions/pdf',[AdoptionController::class,'pdf']);
+
+
         Route::get('export/users/excel',[UserController::class,'excel']);
+        Route::get('export/adoption/excel',[AdoptionController::class,'excel']);
 
         //Import Excel
         Route::POST('import/users',[UserController::class,'import']);
