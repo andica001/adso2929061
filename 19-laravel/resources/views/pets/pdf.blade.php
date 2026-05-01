@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>All Users</title>
+    <title>All Pets</title>
     <style>
         table {
             border: 2px solid #aaa;
@@ -30,43 +30,48 @@
     <table>
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Full Name</th>
-                <th>Gender</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Kind</th>
+                <th>Weight</th>
                 <th>Age</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Role</th>
+                <th>Breed</th>
+                <th>Location</th>
+                <th>Description</th>
                 <th>Active</th>
-                <th>Photo</th>
+                <th>Status</th>
+                
             </tr>
         </thead>
         <tbody>
-            @foreach ($users as $user)
+            @foreach ($pets as $pet)
             <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->fullname }}</td>
-                <td>{{ $user->gender }}</td>
-                <td>{{ Carbon\Carbon::parse($user->birthdate)->age }} years old</td>
-                <td>{{ $user->email }}</td>
-                <td>{{ $user->phone }}</td>
-                <td>{{ $user->role }}</td>
+                <td>{{ $pet->name }}</td>
                 <td>
-                    @if ($user->active == 1)
+                    @if ($pet->image != 'no-photo.png')
+                        <img src="{{ public_path().'/images/'.$pet->image }}" width="96px">
+                    @else
+                        No Photo
+                    @endif
+                </td>
+                <td>{{ $pet->kind }}</td>
+                <td>{{ $pet->weight }}</td>
+                <td>{{ $pet->age }}</td>
+                <td>{{ $pet->breed }}</td>
+                <td>{{ $pet->location }}</td>
+                <td>{{ $pet->description }}</td>
+                <td>
+                    @if ($pet->active == 1)
                         Active
                     @else
                         Inactive
                     @endif
                 </td>
-
                 <td>
-                    @php
-                        $extension = substr($user->photo, -4);
-                    @endphp
-                    @if ($extension != 'webp' && $extension != '.svg')
-                        <img src="{{ public_path().'/images/'.$user->photo }}" width="96px">
+                    @if ($pet->status == 1)
+                        Available
                     @else
-                        Webp|SVG
+                        Not Available
                     @endif
                 </td>
             </tr>

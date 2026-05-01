@@ -6,10 +6,10 @@ use App\Models\Pet;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\PDF;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\UsersExport;
-use App\Imports\UsersImport;
+use App\Exports\PetsExport;
+use App\Imports\PetsImport;
 
-class UserController extends Controller
+class PetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,27 +37,17 @@ class UserController extends Controller
     {
         //
         $validation = $request->validate([
-
-        'name',
-        'image',
-        'kind',
-        'weight',
-        'age',
-        'breed',
-        'location',
-        'description',
-        'active',
-        'status',
             // All rules validation
             'name' => ['required', 'string'],
-            'image' => ['required', 'image'],
+            'photo' => [ 'image'],
             'kind' => ['required', 'string'],
             'weight' => ['required', 'numeric'],
             'age' => ['required', 'integer'],
             'breed' => ['required', 'string'],
             'location' => ['required', 'string'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . Pet::class],
-            'password' => ['required', 'confirmed'],
+            'description' => ['required', 'string'],
+            'active' => ['required', 'integer'],
+            'status' => ['required', 'integer']
         ]);
 
         if ($validation) {
@@ -65,20 +55,24 @@ class UserController extends Controller
             if ($request->hasFile('photo')) {
                 $photo = time() . '.' . $request->photo->extension();
                 $request->photo->move(public_path('images'), $photo);
+            }else{
+                $photo='no-image.png';
             }
             // Save Pet
-            $user = new Pet;
-            $user->document = $request->document;
-            $user->fullname = $request->fullname;
-            $user->gender = $request->gender;
-            $user->birthdate = $request->birthdate;
-            $user->photo = $photo;
-            $user->phone = $request->phone;
-            $user->email = $request->email;
-            $user->password = $request->password;
+            $pet = new Pet;
+            $pet->name = $request->name;
+            $pet->image = $photo;
+            $pet->kind = $request->kind;
+            $pet->weight = $request->weight;
+            $pet->age = $request->age;
+            $pet->breed = $request->breed;
+            $pet->location = $request->location;
+            $pet->description = $request->description;
+            $pet->active = $request->active;
+            $pet->status = $request->status;
 
-            if ($user->save()) {
-                return redirect('users')->with('message', 'The User: ' . $user->fullname . 'was added succesfully.');
+            if ($pet->save()) {
+                return redirect('pets')->with('message', 'The Pet: ' . $pet->name . 'was added succesfully.');
             }
         }
     }
@@ -86,35 +80,39 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show(Pet $pet)
     {
         //
-        return view('users.show')->with('user', $user);
+        return view('pets.show')->with('pet', $pet);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(Pet $pet)
     {
         //
-        return view('users.edit')->with('user', $user);
+        return view('pets.edit')->with('pet', $pet);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Pet $pet)
     {
         //
         $validation = $request->validate([
             // All rules validation
-            'document' => ['required', 'unique:' . User::class . ',document,' . $user->id],
-            'fullname' => ['required', 'string'],
-            'gender' => ['required'],
-            'birthdate' => ['required', 'date'],
-            'phone' => ['required'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class . ',email,' . $user->id],
+            'name' => ['required', 'string'],
+            'photo' => ['image'],
+            'kind' => ['required', 'string'],
+            'weight' => ['required', 'numeric'],
+            'age' => ['required', 'integer'],
+            'breed' => ['required', 'string'],
+            'location' => ['required', 'string'],
+            'description' => ['required', 'string'],
+            'active' => ['required', 'integer'],
+            'status' => ['required', 'integer']
         ]);
 
         if ($validation) {
@@ -122,23 +120,26 @@ class UserController extends Controller
             if ($request->hasFile('photo')) {
                 $photo = time() . '.' . $request->photo->extension();
                 $request->photo->move(public_path('images'), $photo);
-                if ($request->originphoto != 'no-photo.png' && file_exists(public_path('images/' . $user->photo))) {
-                    unlink(public_path('images/' . $user->photo));
+                if ($request->originphoto != 'no-image.png' && file_exists(public_path('images/' . $pet->image))) {
+                    unlink(public_path('images/' . $pet->image));
                 }
             } else {
                 $photo = $request->originphoto;
             }
-            // Save User
-            $user->document = $request->document;
-            $user->fullname = $request->fullname;
-            $user->gender = $request->gender;
-            $user->birthdate = $request->birthdate;
-            $user->photo = $photo;
-            $user->phone = $request->phone;
-            $user->email = $request->email;
+            // Save Pet
+            $pet->name = $request->name;
+            $pet->image = $photo;
+            $pet->kind = $request->kind;
+            $pet->weight = $request->weight;
+            $pet->age = $request->age;
+            $pet->breed = $request->breed;
+            $pet->location = $request->location;
+            $pet->description = $request->description;
+            $pet->active = $request->active;
+            $pet->status = $request->status;
 
-            if ($user->save()) {
-                return redirect('users')->with('message', 'The User: ' . $user->fullname . 'was edited succesfully.');
+            if ($pet->save()) {
+                return redirect('pets')->with('message', 'The Pet: ' . $pet->name . 'was edited succesfully.');
             }
         }
     }
@@ -146,14 +147,14 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(Pet $pet)
     {
         //
-        if ($user->photo != 'no-photo.png' && file_exists(public_path('images/' . $user->photo))) {
-            unlink(public_path('images/' . $user->photo));
+        if ($pet->image != 'no-image.png' && file_exists(public_path('images/' . $pet->image))) {
+            unlink(public_path('images/' . $pet->image));
         }
-        if ($user->delete()) {
-            return redirect('users')->with('message', 'The User: ' . $user->fullname . ' was deleted succesfully.');
+        if ($pet->delete()) {
+            return redirect('pets')->with('message', 'The Pet: ' . $pet->name . ' was deleted succesfully.');
         }
     }
 
@@ -163,30 +164,30 @@ class UserController extends Controller
      */
     public function pdf()
     {
-        $users = User::all();
-        $pdf = PDF::loadView('users.pdf', compact('users'));
-        return $pdf->download('allusers.pdf');
-
+        $pets = PET::all();
+        $pdf = PDF::loadView('pets.pdf', compact('pets'));
+        return $pdf->download('allpets.pdf');
     }
 
     public function excel()
     {
-        return Excel::download(new UsersExport,'allusers.xlsx');
-
+        return Excel::download(new PetsExport, 'allpets.xlsx');
     }
 
-    public function import(Request $request){
-        $file=$request->file('file');
-        Excel::import(new UsersImport, $file);
-        return redirect()->back()->with('message','Users imported succesfsful!');
+    public function import(Request $request)
+    {
+        $file = $request->file('file');
+        Excel::import(new PetsImport, $file);
+        return redirect()->back()->with('message', 'Pets imported succesfsful!');
     }
 
     /**
      * Search
      */
 
-    Public function search(Request $request){
-        $users = User::names($request->q)->orderBy('id','desc')->paginate(12);
-        return view('users.search')->with('users',$users);
+    public function search(Request $request)
+    {
+        $pets = Pet::names($request->q)->orderBy('id', 'desc')->paginate(12);
+        return view('pets.search')->with('pets', $pets);
     }
 }

@@ -121,8 +121,9 @@ class AdoptionController extends Controller
      */
     public function pdf()
     {
-       
-
+        $adopts = Adoption::all();
+        $pdf = PDF::loadView('adoptions.pdf', compact('adopts'));
+        return $pdf->download('alladoptions.pdf');
     }
 
     public function excel()
@@ -131,9 +132,7 @@ class AdoptionController extends Controller
     }
 
     public function import(Request $request){
-        $file=$request->file('file');
-        Excel::import(new UsersImport, $file);
-        return redirect()->back()->with('message','Users imported succesfsful!');
+        
     }
 
     /**
@@ -141,7 +140,7 @@ class AdoptionController extends Controller
      */
 
     Public function search(Request $request){
-        $users = User::names($request->q)->orderBy('id','desc')->paginate(12);
-        return view('users.search')->with('users',$users);
+        $adopts = Adoption::names($request->q)->orderBy('id','desc')->paginate(12);
+        return view('adoptions.search')->with('adopts',$adopts);
     }
 }

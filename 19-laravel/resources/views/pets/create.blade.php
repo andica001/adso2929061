@@ -60,58 +60,69 @@
                     <input type="file" id="photo" name="photo" class="hidden" accept="image/*">
                 </div>
                 <div class="w-full md:w-[320px]">
-                    {{-- Document --}}
-                    <label class="label text-white">Document:</label>
-                    <input type="text" class="input bg-[#0009] outline-0" name="document" placeholder="75123123" value="{{ old('document') }}">
-                    @error('document')
+                    {{-- Name --}}
+                    <label class="label text-white">Name:</label>
+                    <input type="text" class="input bg-[#0009] outline-0" name="name" placeholder="pepinillo" value="{{ old('name') }}">
+                    @error('name')
                         <small class="badge badge-error w-full mt-1 text-xs py-4">{{ $message }}</small>
                     @enderror
-                    {{-- FullName --}}
-                    <label class="label text-white">FullName:</label>
-                    <input type="text" class="input bg-[#0009] outline-0" name="fullname" placeholder="Jeremias Springfield" value="{{ old('fullname') }}">
-                    @error('fullname')
+                    {{-- Kind --}}
+                    <label class="label text-white">Kind:</label>
+                    <input type="text" class="input bg-[#0009] outline-0" name="kind" placeholder="Dog" value="{{ old('kind') }}">
+                    @error('kind')
                         <small class="badge badge-error w-full mt-1 text-xs py-4">{{ $message }}</small>
                     @enderror
-                    {{-- Gender --}}
-                    <label class="label text-white">Gender:</label>
-                    <select name="gender" class="select bg-[#0009] outline-0">
-                        <option value="">Select...</option>
-                        <option value="Female" @if(old('gender') == 'Female') selected @endif>Female</option>
-                        <option value="Male" @if(old('gender') == 'Male') selected @endif>Male</option>
-                    </select>
-                    @error('gender')
+                    {{-- Weight --}}
+                    <label class="label text-white">Weight:</label>
+                    <input type="number" class="input bg-[#0009] outline-0" name="weight" placeholder="10.5" value="{{ old('weight') }}" step="0.1">
+                    @error('weight')
                         <small class="badge badge-error w-full mt-1 text-xs py-4">{{ $message }}</small>
                     @enderror
-                    {{-- Birthdate --}}
-                    <label class="label text-white">Birthdate:</label>
-                    <input type="date" class="input bg-[#0009] outline-0" name="birthdate" placeholder="1640-10-08" value="{{ old('birthdate') }}">
-                    @error('birthdate')
+                    {{-- Age --}}
+                    <label class="label text-white">Age:</label>
+                    <input type="number" class="input bg-[#0009] outline-0" name="age" placeholder="1640-10-08" value="{{ old('age') }}">
+                    @error('age')
+                        <small class="badge badge-error w-full mt-1 text-xs py-4">{{ $message }}</small>
+                    @enderror
+
+                    {{-- Breed --}}
+                    <label class="label text-white">Breed:</label>
+                    <input type="text" class="input bg-[#0009] outline-0" name="breed" placeholder="Breed" value="{{ old('breed') }}">
+                    @error('breed')
                         <small class="badge badge-error w-full mt-1 text-xs py-4">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="w-full md:w-[320px]">
-                    {{-- Phone --}}
-                    <label class="label text-white">Phone:</label>
-                    <input type="text" class="input bg-[#0009] outline-0" name="phone" placeholder="3101231234" value="{{ old('phone') }}">
-                    @error('phone')
+                    {{-- Location --}}
+                    <label class="label text-white">Location:</label>
+                    <input type="text" class="input bg-[#0009] outline-0" name="location" placeholder="Location" value="{{ old('location') }}">
+                    @error('location')
                         <small class="badge badge-error w-full mt-1 text-xs py-4">{{ $message }}</small>
                     @enderror
-                    {{-- Email --}}
-                    <label class="label text-white">Email:</label>
-                    <input type="text" class="input bg-[#0009] outline-0" name="email" placeholder="Email" value="{{ old('email') }}">
-                    @error('email')
+                    {{-- Description --}}
+                    <label class="label text-white">Description:</label>
+                    <input type="text" class="input bg-[#0009] outline-0" name="description" placeholder="Description" value="{{ old('description') }}">
+                    @error('description')
                         <small class="badge badge-error w-full mt-1 text-xs py-4">{{ $message }}</small>
                     @enderror
-                    {{-- Password --}}
-                    <label class="label text-white">Password:</label>
-                    <input type="password" class="input bg-[#0009] outline-0" name="password" placeholder="Secret">
-                    @error('password')
+                    {{-- Active --}}
+                    <label class="label text-white">Active:</label>
+                    <select name="active" id="" class="input bg-[#0009] outline-0">
+                        <option value="1">Active</option>
+                        <option value="0">Inactive</option>
+                    </select>
+                    @error('active')
                         <small class="badge badge-error w-full mt-1 text-xs py-3">{{ $message }}</small>
                     @enderror
-                    {{-- Password Confirmation --}}
-                    <label class="label text-white">Password Confirmation:</label>
-                    <input type="password" class="input bg-[#0009] outline-0" name="password_confirmation" placeholder="Secret">
-
+                    {{-- Status --}}
+                    <label class="label text-white">Status:</label>
+                    <select name="status" id="" class="input bg-[#0009] outline-0">
+                        <option value="1">Available</option>
+                        <option value="0">Not Available</option>
+                    </select>
+                    @error('status')
+                        <small class="badge badge-error w-full mt-1 text-xs py-3">{{ $message }}</small>
+                    @enderror
                     <button class="btn btn-outline hover:bg-[#fff6] hover:text-white mt-3 w-full">Add</button>
                 </div>
             </form>
