@@ -100,7 +100,7 @@ Route::middleware('auth')->group(function() {
 
         Route::get('export/users/excel',[UserController::class,'excel']);
         Route::get('export/pets/excel',[PetController::class,'excel']);
-        Route::get('export/adoption/excel',[AdoptionController::class,'excel']);
+        Route::get('export/adoptions/excel',[AdoptionController::class,'excel']);
 
         //Import Excel
         Route::POST('import/users',[UserController::class,'import']);

@@ -128,7 +128,7 @@ class AdoptionController extends Controller
 
     public function excel()
     {
-
+        return Excel::download(new AdoptionsExport, 'alladoptions.xlsx');
     }
 
     public function import(Request $request){
