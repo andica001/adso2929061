@@ -254,7 +254,7 @@
             {{-- Module My Profile --}}
             <div class="card text-white bg-[#0006] w-96 shadow-sm">
                 <figure class="h-[240px]">
-                    <img class="object-cover" src="{{ asset('images/bg-users.jpeg') }}" />
+                    <img class="object-cover" src="{{ asset('images/bg-users.png') }}" />
                 </figure>
                 <div class="card-body">
                     <h2 class="card-title">
@@ -280,7 +280,7 @@
             {{-- Module My Adoptions --}}
             <div class="card text-white bg-[#0006] w-96 shadow-sm">
                 <figure class="h-[240px]">
-                    <img class="object-cover" src="{{ asset('images/bg-pets.jpeg') }}" />
+                    <img class="object-cover" src="{{ asset('images/bg-pets.png') }}" />
                 </figure>
                 <div class="card-body">
                     <h2 class="card-title">
@@ -308,7 +308,7 @@
             {{-- Module Adoptions --}}
             <div class="card text-white bg-[#0006] w-96 shadow-sm">
                 <figure class="h-[240px]">
-                    <img class="object-cover" src="{{ asset('images/bg-adoptions.jpeg') }}" />
+                    <img class="object-cover" src="{{ asset('images/bg-adoptions.png') }}" />
                 </figure>
                 <div class="card-body">
                     <h2 class="card-title">
@@ -338,12 +338,23 @@
 @section('js')
     <script>
 
-        //Mensajes
+        //Errores
         @if(session('error'))
             Swal.fire({
                 position: "top-end",
                 icon: "error",
                 title: "{{ session('error') }}",
+                showConfirmButton: false,
+                timer: 4500
+            });
+        @endif
+
+        //Mensajes
+        @if(session('message'))
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "{{ session('message') }}",
                 showConfirmButton: false,
                 timer: 4500
             });

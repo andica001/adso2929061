@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdoptionController;
 use App\Http\Controllers\PetController;
+use App\Http\Controllers\CustomerController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -111,6 +112,19 @@ Route::middleware('auth')->group(function() {
         Route::post('search/pets',[PetController::class,'search']);
         Route::post('search/adoptions',[AdoptionController::class,'search']);
     });
+
+    //Customer
+    Route::get('myprofile/', [CustomerController::class, 'myprofile']);
+    Route::put('myprofile/{id}', [CustomerController::class, 'updatemyprofile']);
+
+    Route::get('myadoptions/', [CustomerController::class, 'myadoptions']);
+    Route::get('myadoptions/{id}', [CustomerController::class, 'showmyadoption']);
+
+    Route::get('listpets/', [CustomerController::class, 'listpets']);
+    Route::post('search/adoptionpets', [CustomerController::class, 'search']);
+    Route::get('showpet/{id}', [CustomerController::class, 'showpet']);
+    Route::post('makeadoption', [CustomerController::class, 'makeadoption']);
+
 
 });
 
