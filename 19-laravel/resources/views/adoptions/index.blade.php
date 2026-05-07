@@ -74,8 +74,4 @@
             <span class="border-b-1 border-dashed mt-2 border-[#fff6] h-2 w-12/12"></span>
         @endforeach
     </div>
- 
- 
- 
- 
 @endsection

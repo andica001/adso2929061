@@ -320,7 +320,7 @@
                         Make Adoption
                     </h2>
                     <div class="card-actions justify-end">
-                        <a class="btn btn-outline hover:bg-[#fff6] hover:text-white mt-3" href="{{ url('makeadoption') }}">
+                        <a class="btn btn-outline hover:bg-[#fff6] hover:text-white mt-3" href="{{ url('listpets') }}">
                             Enter
                             <svg xmlns="http://www.w3.org/2000/svg" class="size-6" fill="currentColor" viewBox="0 0 256 256">
                                 <path

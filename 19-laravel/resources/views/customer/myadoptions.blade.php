@@ -87,7 +87,30 @@
         @endforelse
     </div>
 
+@endsection
+@section('js')
+    <script>
 
+        //Errores
+        @if(session('error'))
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: "{{ session('error') }}",
+                showConfirmButton: false,
+                timer: 4500
+            });
+        @endif
 
-
+        //Mensajes
+        @if(session('message'))
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "{{ session('message') }}",
+                showConfirmButton: false,
+                timer: 4500
+            });
+        @endif
+    </script>
 @endsection

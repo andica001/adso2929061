@@ -122,6 +122,7 @@ Route::middleware('auth')->group(function() {
 
     Route::get('listpets/', [CustomerController::class, 'listpets']);
     Route::post('search/adoptionpets', [CustomerController::class, 'search']);
+    Route::post('search/listpets', [CustomerController::class, 'searchpets']);
     Route::get('showpet/{id}', [CustomerController::class, 'showpet']);
     Route::post('makeadoption', [CustomerController::class, 'makeadoption']);
 

@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Pet;
 use App\Models\Adoption;
 
 use Illuminate\Http\Request;
@@ -71,5 +72,41 @@ class CustomerController extends Controller
         Public function search(Request $request){
         $adopts = Adoption::names($request->q)->orderBy('id','desc')->paginate(12);
         return view('adoptions.search')->with('adopts',$adopts);
+    }
+
+    public function searchpets(Request $request){
+        $pets = Pet::names($request->q)->orderBy('id','desc')->paginate(12);
+        return view('customer.searchpets')->with('pets',$pets);
+    }
+
+    public function listpets()
+    {
+        $pets = Pet::where('status', 0)->orderBy('id', 'desc')->paginate(12);
+        return view('customer.listpets')->with('pets', $pets);
+    }
+
+    public function showpet(Request $request)
+    {
+        $pet = Pet::find($request->id);
+        return view('customer.showpet')->with('pet', $pet);
+    }
+
+    public function makeadoption(Request $request)
+    {
+        $count = Adoption::where('user_id', Auth::user()->id)->count();
+        if ($count < 4) {
+            
+            $pet_id = Pet::find($request->pet_id);
+            $adoption = new Adoption();
+            $adoption->user_id = Auth::user()->id;
+            $adoption->pet_id = $pet_id->id;
+            if ($adoption->save()) {
+                $pet_id->status = 1;
+                $pet_id->save();
+                return redirect('myadoptions')->with('message', 'The adoption was made succesfully.');
+            }
+        }else{
+            return redirect('myadoptions')->with('error', 'You have reached the maximum number of adoptions allowed (4).');
+        }
     }
 }
