@@ -33,8 +33,97 @@ class PetController extends Controller
         ]);
     }
 
-    public function store(Request $request) {}
-    public function update(Request $request, $id) {}
+    public function store(Request $request)
+    {
+        try {
+            $validation = $request->validate([
+                // All rules validation
+                'name' => ['required', 'string'],
+                'kind' => ['required', 'string'],
+                'weight' => ['required', 'numeric'],
+                'age' => ['required', 'integer'],
+                'breed' => ['required', 'string'],
+                'location' => ['required', 'string'],
+                'description' => ['required', 'string'],
+                'active' => ['required', 'integer'],
+                'status' => ['required', 'integer']
+            ]);
+
+            if ($validation) {
+                $photo = 'no-image.png';
+                // Save Pet
+                $pet = new Pet;
+                $pet->name = $request->name;
+                $pet->image = $photo;
+                $pet->kind = $request->kind;
+                $pet->weight = $request->weight;
+                $pet->age = $request->age;
+                $pet->breed = $request->breed;
+                $pet->location = $request->location;
+                $pet->description = $request->description;
+                $pet->active = $request->active;
+                $pet->status = $request->status;
+
+                if ($pet->save()) {
+                    return response()->json([
+                        'message' => '✅ Pet created successfully',
+                        'Pet' => $pet
+                    ], 201); // 201 significa "Creado"
+                }
+            }
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => '❌ Error creating pet',
+                'error' => $e->getMessage()
+            ], 400); // 400 significa "Bad Request"
+        }
+    }
+    public function update(Request $request, $id)
+    {
+        try {
+            $pet = Pet::find($id);
+
+
+            //
+            $validation = $request->validate([
+                // All rules validation
+                'name' => ['required', 'string'],
+                'kind' => ['required', 'string'],
+                'weight' => ['required', 'numeric'],
+                'age' => ['required', 'integer'],
+                'breed' => ['required', 'string'],
+                'location' => ['required', 'string'],
+                'description' => ['required', 'string'],
+                'active' => ['required', 'integer'],
+                'status' => ['required', 'integer']
+            ]);
+
+            if ($validation) {
+                // Save Pet
+                $pet->name = $request->name;
+                $pet->kind = $request->kind;
+                $pet->weight = $request->weight;
+                $pet->age = $request->age;
+                $pet->breed = $request->breed;
+                $pet->location = $request->location;
+                $pet->description = $request->description;
+                $pet->active = $request->active;
+                $pet->status = $request->status;
+
+                if ($pet->save()) {
+                    return response()->json([
+                        'message' => '✅ Pet updated successfully',
+                        'Pet' => $pet
+                    ]);
+                }
+            }
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => '❌ Error updating pet',
+                'error' => $e->getMessage()
+            ], 400); // 400 significa "Bad Request"
+        }
+    }
 
     public function destroy($id)
     {

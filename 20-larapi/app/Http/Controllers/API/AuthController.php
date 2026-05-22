@@ -32,7 +32,7 @@ class AuthController extends Controller
                 'user' => $user
             ],200);
         }
-        catch(\Iluminate\Validation\ValidationException $e){
+        catch(\Illuminate\Validation\ValidationException $e){
             return response()->json([
                 'message' =>'❌ something wrong!',
                 'errors' => $e->errors()
