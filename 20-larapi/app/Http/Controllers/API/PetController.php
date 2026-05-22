@@ -87,28 +87,20 @@ class PetController extends Controller
             //
             $validation = $request->validate([
                 // All rules validation
-                'name' => ['required', 'string'],
-                'kind' => ['required', 'string'],
-                'weight' => ['required', 'numeric'],
-                'age' => ['required', 'integer'],
-                'breed' => ['required', 'string'],
-                'location' => ['required', 'string'],
-                'description' => ['required', 'string'],
-                'active' => ['required', 'integer'],
-                'status' => ['required', 'integer']
+                'name' => ['sometimes', 'required', 'string'],
+                'kind' => ['sometimes','required', 'string'],
+                'weight' => ['sometimes','required', 'numeric'],
+                'age' => ['sometimes','required', 'integer'],
+                'breed' => ['sometimes','required', 'string'],
+                'location' => ['sometimes','required', 'string'],
+                'description' => ['sometimes','required', 'string'],
+                'active' => ['sometimes','required', 'integer'],
+                'status' => ['sometimes','required', 'integer']
             ]);
 
             if ($validation) {
                 // Save Pet
-                $pet->name = $request->name;
-                $pet->kind = $request->kind;
-                $pet->weight = $request->weight;
-                $pet->age = $request->age;
-                $pet->breed = $request->breed;
-                $pet->location = $request->location;
-                $pet->description = $request->description;
-                $pet->active = $request->active;
-                $pet->status = $request->status;
+                $pet->update($request->all());
 
                 if ($pet->save()) {
                     return response()->json([
