@@ -1,3 +1,260 @@
+/* Importar la fuente Poppins para un acabado más limpio y profesional */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Fondo general simulando las ondas y el degradado azul/verde */
+body {
+  background: linear-gradient(135deg, #2b5876 0%, #4e4376 50%, #76ba8d 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Contenedor tipo teléfono móvil/tarjeta según tus capturas */
+.app-card-container {
+  background: linear-gradient(180deg, #bbf1fa 0%, #eefbfb 40%, #f4eae1 100%);
+  width: 100%;
+  max-width: 410px;
+  height: 820px; /* 🔲 Forzamos una altura fija para simular el marco móvil */
+  border-radius: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  padding: 30px 25px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* 🛑 Evita que cualquier elemento hijo se desborde del marco */
+  border: 4px solid #ffffff;
+}
+
+/* Estilo para las huellitas decorativas de fondo (Opcional usando opacidad) */
+.app-card-container::before {
+  content: '🐾';
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 40px;
+  opacity: 0.08;
+}
+
+.app-card-container.status-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center;
+  gap: 20px;
+  padding: 40px;
+}
+
+/* Personalización del scrollbar interno para que se vea sutil y moderno */
+.scrollable-items-container::-webkit-scrollbar {
+  width: 5px;
+}
+.scrollable-items-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollable-items-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.scrollable-items-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Encabezados y logos circulares superiores */
+.app-header-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo-circle {
+  width: 90px;
+  height: 90px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #76ba8d;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  font-size: 40px;
+}
+
+.app-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #555555;
+  text-transform: uppercase;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+/* Botón de volver (Flecha naranja redondeada) */
+.btn-back-arrow {
+  position: absolute;
+  top: 30px;
+  left: 25px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: #ff5722;
+  cursor: pointer;
+  transition: transform 0.2s;
+  z-index: 10;
+}
+.btn-back-arrow:hover {
+  transform: scale(1.15);
+}
+
+/* Campos de entrada grises y redondeados (Inputs) */
+.form-group-custom {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group-custom label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333333;
+  margin-left: 10px;
+}
+
+.input-custom-gray {
+  width: 100%;
+  background-color: #dcdcdc;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 18px;
+  font-size: 15px;
+  color: #555555;
+  text-align: center;
+  margin-top: 5px;
+  outline: none;
+  transition: background-color 0.3s;
+}
+
+.input-custom-gray:focus {
+  background-color: #cfcfcf;
+  border: 1px solid #76ba8d;
+}
+
+/* Botones principales de acción inferiores (Adicionar, Guardar, Iniciar) */
+.btn-submit-green {
+  width: 100%;
+  background-color: #76ba8d;
+  color: #ffffff;
+  border: 2px solid #333333;
+  padding: 14px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.2s;
+}
+
+.btn-submit-green:hover {
+  background-color: #65a87c;
+  transform: translateY(-1px);
+}
+
+/* Estilos de la lista del Dashboard */
+.pet-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+  
+  /* 🔄 Control del desborde */
+  flex-grow: 1;          /* Ocupa el espacio disponible verticalmente */
+  overflow-y: auto;       /* 📜 Activa la barra de scroll solo cuando los ítems superen el espacio */
+  padding-right: 5px;     /* Espacio para que la barra de scroll no pise los botones */
+}
+
+/* ✨ OPCIONAL: Personaliza la barra de scroll para que se vea más estética y delgada */
+.pet-list-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.pet-list-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.pet-list-container::-webkit-scrollbar-thumb {
+  background: #76ba8d; /* Color verde como el de tus botones */
+  border-radius: 10px;
+}
+
+.pet-item-row {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 15px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.pet-avatar {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;  /* 🔒 Evita que se encoja si el texto es muy largo */
+  min-height: 50px; /* 🔒 Evita que se distorsione */
+  border-radius: 12px;
+  object-fit: cover;
+  background-color: #e0e0e0; /* Fondo gris de respaldo */
+}
+
+.pet-info-meta {
+  flex-grow: 1;
+  padding-left: 15px;
+}
+
+.pet-info-meta h4 {
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+
+.pet-info-meta p {
+  font-size: 12px;
+  color: #777;
+}
+
+.action-buttons-group {
+  display: flex;
+  gap: 5px;
+}
+
+.btn-action-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+}
+
+.btn-view { background-color: #2196f3; }
+.btn-edit { background-color: #9c27b0; }
+.btn-delete { background-color: #f44336; }
+
 .App {
   max-width: 1200px;
   margin: 0 auto;
